@@ -1,0 +1,21 @@
+services:
+  blog:
+    ports:
+      - "3002:3000"
+    env_file:
+      - .env.local
+    depends_on:
+      - mailpit
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: entazis-mailpit
+    restart: unless-stopped
+    environment:
+      MP_SMTP_AUTH_FILE: /data/smtp-auth.txt
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+    ports:
+      - "8025:8025"
+    volumes:
+      - ./smtp-auth.txt:/data/smtp-auth.txt:ro
+

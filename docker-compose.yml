@@ -1,0 +1,7 @@
+services:
+  blog:
+    build:
+      context: .
+    image: entazis-blog
+    container_name: entazis-blog
+    restart: unless-stopped

@@ -2,38 +2,52 @@
 
 import { useState } from "react";
 
-const mailToAddress = "hello@entazis.dev";
-const subject = "Blog updates interest";
-
 export default function InterestForm() {
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!email.trim()) {
+    const trimmed = email.trim();
+    if (!trimmed) {
       return;
     }
 
-    const body = [
-      "Hi,",
-      "",
-      "Someone is interested in content updates.",
-      "",
-      `Email: ${email.trim()}`,
-      `Page: ${window.location.href}`,
-      "",
-      "--",
-      "Sent from entazis.dev"
-    ].join("\n");
+    try {
+      setStatus("sending");
 
-    const params = new URLSearchParams({
-      subject,
-      body
-    });
+      const response = await fetch("/api/interest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: trimmed,
+          pageUrl: window.location.href
+        })
+      });
 
-    window.location.href = `mailto:${mailToAddress}?${params.toString()}`;
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      setEmail("");
+      setStatus("sent");
+    } catch (error) {
+      console.error("Interest form failed:", error);
+      setStatus("error");
+    }
   };
+
+  const helperText =
+    status === "sent"
+      ? "Thanks! I'll reach out when it's ready."
+      : status === "error"
+        ? "Something went wrong. Please try again later."
+        : "No emails yet. Just collecting interest.";
 
   return (
     <>
@@ -45,22 +59,29 @@ export default function InterestForm() {
           type="email"
           name="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            if (status !== "idle") {
+              setStatus("idle");
+            }
+          }}
           placeholder="you@email.com"
           autoComplete="email"
           inputMode="email"
           required
+          disabled={status === "sending"}
           className="focus-ring w-full max-w-sm rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground"
         />
         <button
           type="submit"
+          disabled={status === "sending"}
           className="focus-ring inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
         >
-          Notify me
+          {status === "sending" ? "Sending..." : "Notify me"}
         </button>
       </form>
-      <p className="mt-3 text-xs text-muted-foreground">
-        No emails yet. Just collecting interest.
+      <p className="mt-3 text-xs text-muted-foreground" aria-live="polite">
+        {helperText}
       </p>
     </>
   );

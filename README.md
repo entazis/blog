@@ -1,6 +1,6 @@
 # Entázis Blog
 
-A fast, SEO-friendly **static** blog built with **Next.js (App Router)** and **MDX-in-Git**. It exports to an `out/` folder so you can host it directly behind **nginx** on your VPS (no Node server required).
+A fast, SEO-friendly blog built with **Next.js (App Router)** and **MDX-in-Git**. It runs as a Node.js server behind **nginx** and can still statically generate pages for SEO and performance.
 
 ## Features
 
@@ -46,39 +46,110 @@ Frontmatter fields (recommended):
 - `canonicalUrl` (optional)
 - `coverImage` (optional): path under `public/`, e.g. `/images/covers/foo.png`
 
-## Build (static export)
+## Production build
 
-This repo is configured for static export (`output: 'export'`). Build generates:
+Build generates:
 
 - `public/search-index.json`
 - `public/sitemap.xml`
 - `public/robots.txt`
 - `public/rss.xml`
 
-Then exports the site to `out/`.
-
 ```bash
 npm run build
 ```
+
+Run the production server locally:
+
+```bash
+npm run start
+```
+
+## Email interest notifications
+
+Set the following environment variables on the server (do not commit them):
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+- `INTEREST_TO` (optional, defaults to `hello@entazis.dev`)
+
+### Local SMTP (Mailpit) vs production SMTP (Gmail)
+
+- **Local**: use `docker-compose.local.yml` + `.env.local` (Mailpit captures outgoing emails at `http://localhost:8025`).
+- **Production**: create a `.env` on the server with your real SMTP creds (for Gmail, typically `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, and an App Password as `SMTP_PASS`).
 
 ## Deploy to VPS (nginx)
 
-1. Build locally or in CI:
+1. Build on the server (or in CI):
 
 ```bash
 npm run build
 ```
 
-1. Copy the `out/` folder contents to your VPS web root, e.g.:
+2. Run the app with a process manager (systemd, pm2, etc.):
 
-- `/var/www/blog.entazis.dev/`
+```bash
+npm run start
+```
 
-1. Configure nginx. A sample server block is in [`nginx/blog.entazis.dev.conf`](nginx/blog.entazis.dev.conf).
+3. Configure nginx as a reverse proxy. A sample server block is in [`nginx/blog.entazis.dev.conf`](nginx/blog.entazis.dev.conf).
 
-1. Reload nginx:
+4. Reload nginx:
 
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
+```
+
+## Deploy with Docker + host nginx
+
+This keeps nginx on the host and runs the app in a container.
+
+1. Build the image on the server (or in CI):
+
+```bash
+docker build -t entazis-blog .
+```
+
+2. Create a `.env` file for SMTP secrets (see `.env.example`).
+
+3. Run the container with your `.env` file:
+
+```bash
+docker run -d --name entazis-blog \
+  --env-file .env \
+  -p 3000:3000 \
+  entazis-blog
+```
+
+4. Keep nginx pointing to `http://127.0.0.1:3000` (see `nginx/blog.entazis.dev.conf`) and reload it:
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+## Docker Compose (host nginx)
+
+### Local (Mailpit)
+
+1. Start the local stack (Mailpit + app):
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
+```
+
+2. App runs on `http://localhost:3002` and Mailpit UI on `http://localhost:8025`.
+
+### Production
+
+1. Create a `.env` file for SMTP secrets (see `.env.example`).
+
+2. Build and run:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 ```
 
 ## Quick rsync deploy (optional)
