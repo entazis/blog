@@ -84,15 +84,45 @@ Set the following environment variables on the server (do not commit them):
 npm run build
 ```
 
-1. Run the app with a process manager (systemd, pm2, etc.):
+2. Run the app with a process manager (systemd, pm2, etc.):
 
 ```bash
 npm run start
 ```
 
-1. Configure nginx as a reverse proxy. A sample server block is in [`nginx/blog.entazis.dev.conf`](nginx/blog.entazis.dev.conf).
+3. Configure nginx as a reverse proxy. A sample server block is in [`nginx/blog.entazis.dev.conf`](nginx/blog.entazis.dev.conf).
 
-1. Reload nginx:
+4. Reload nginx:
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+## Deploy with Docker + host nginx
+
+This keeps nginx on the host and runs the app in a container.
+
+1. Build the image on the server (or in CI):
+
+```bash
+docker build -t entazis-blog .
+```
+
+2. Run the container with your SMTP env vars:
+
+```bash
+docker run -d --name entazis-blog \
+  -p 3000:3000 \
+  -e SMTP_HOST=your-smtp-host \
+  -e SMTP_PORT=587 \
+  -e SMTP_USER=your-smtp-user \
+  -e SMTP_PASS=your-smtp-pass \
+  -e SMTP_FROM=hello@entazis.dev \
+  -e INTEREST_TO=hello@entazis.dev \
+  entazis-blog
+```
+
+3. Keep nginx pointing to `http://127.0.0.1:3000` (see `nginx/blog.entazis.dev.conf`) and reload it:
 
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
