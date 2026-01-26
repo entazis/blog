@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllContent } from "@/lib/content";
 import { formatDate } from "@/lib/dates";
 import { siteConfig } from "@/lib/site";
+import InterestForm from "@/components/InterestForm";
 
 export default async function HomePage() {
   const all = await getAllContent();
@@ -124,23 +125,11 @@ export default async function HomePage() {
       </section>
 
       <section className="rounded-2xl border border-border bg-card px-6 py-10 text-center">
-        <h2 className="text-2xl font-semibold tracking-tight">Stay updated</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">Updates, soon</h2>
         <p className="mt-2 text-muted-foreground">
-          Subscribe to get notified about new posts. No spam, unsubscribe anytime.
+          Still building this. Add your email if you'd like a note when it's ready.
         </p>
-        <form className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <input
-            type="email"
-            placeholder="you@email.com"
-            className="focus-ring w-full max-w-sm rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground"
-          />
-          <button
-            type="button"
-            className="focus-ring inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
-          >
-            Subscribe
-          </button>
-        </form>
+        <InterestForm />
       </section>
     </div>
   );
