@@ -1,4 +1,4 @@
-# Entazis Blog
+# Entázis Blog
 
 A fast, SEO-friendly **static** blog built with **Next.js (App Router)** and **MDX-in-Git**. It exports to an `out/` folder so you can host it directly behind **nginx** on your VPS (no Node server required).
 
@@ -6,7 +6,7 @@ A fast, SEO-friendly **static** blog built with **Next.js (App Router)** and **M
 
 - **Content types**: posts, notes, reviews (MDX in `content/`)
 - **Discovery**: tags (`/tags`) and build-time search (`/search`)
-- **SEO**: canonical URLs, OpenGraph/Twitter metadata, JSON-LD `Article`, `sitemap.xml`, `robots.txt`, `rss.xml`
+- **SEO**: canonical URLs, OpenGraph metadata, JSON-LD `Article`, `sitemap.xml`, `robots.txt`, `rss.xml`
 - **Reading UX**: typography, dark mode, TOC, reading time, syntax highlighting
 
 ## Requirements

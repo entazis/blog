@@ -13,7 +13,7 @@ export default async function HomePage() {
     <div className="space-y-16">
       <section className="space-y-6">
         <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
-          Hi, I&apos;m <span className="gradient-text">entazis</span>
+          Hi, I&apos;m <span className="gradient-text">Bence</span>
         </h1>
         <p className="max-w-2xl text-pretty text-lg text-muted-foreground">
           {siteConfig.description}

@@ -1,0 +1,56 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-label="Entazis Blog"
+>
+  <rect width="512" height="512" rx="112" fill="#FBF8F0" />
+  <rect
+    x="72"
+    y="72"
+    width="368"
+    height="368"
+    rx="96"
+    fill="#F6F1E6"
+    stroke="#E7DFD0"
+    stroke-width="8"
+  />
+  <line
+    x1="176"
+    y1="168"
+    x2="176"
+    y2="344"
+    stroke="#1FA89A"
+    stroke-width="36"
+    stroke-linecap="round"
+  />
+  <line
+    x1="188"
+    y1="176"
+    x2="332"
+    y2="176"
+    stroke="#1FA89A"
+    stroke-width="36"
+    stroke-linecap="round"
+  />
+  <line
+    x1="188"
+    y1="256"
+    x2="316"
+    y2="256"
+    stroke="#1FA89A"
+    stroke-width="36"
+    stroke-linecap="round"
+  />
+  <line
+    x1="188"
+    y1="336"
+    x2="332"
+    y2="336"
+    stroke="#1FA89A"
+    stroke-width="36"
+    stroke-linecap="round"
+  />
+</svg>

@@ -27,6 +27,10 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.title}`
   },
   description: siteConfig.description,
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg"
+  },
   alternates: { canonical: siteConfig.siteUrl },
   openGraph: {
     type: "website",
@@ -35,11 +39,6 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description
   },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description
-  }
 };
 
 export default function RootLayout({

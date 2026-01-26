@@ -30,12 +30,6 @@ export function metadataForContent(item: ContentItem): Metadata {
       tags: item.tags,
       images: ogImage ? [{ url: ogImage }] : undefined
     },
-    twitter: {
-      card: ogImage ? "summary_large_image" : "summary",
-      title: item.title,
-      description: item.excerpt,
-      images: ogImage ? [ogImage] : undefined
-    }
   };
 }
 

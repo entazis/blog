@@ -27,17 +27,6 @@ export function SiteFooter() {
             </a>
             <a
               className="focus-ring rounded-md p-1 transition hover:text-foreground"
-              href={siteConfig.social.twitter}
-              aria-label="Twitter"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-                <path d="M18.5 2h3.1l-6.8 7.8 8 12.2h-6.1l-4.8-7.2-6.3 7.2H2.5l7.3-8.4L2.1 2h6.2l4.3 6.6L18.5 2zm-1.1 18.2h1.7L7.6 3.7H5.8l11.6 16.5z" />
-              </svg>
-            </a>
-            <a
-              className="focus-ring rounded-md p-1 transition hover:text-foreground"
               href={siteConfig.social.linkedin}
               aria-label="LinkedIn"
               rel="noreferrer"
