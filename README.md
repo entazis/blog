@@ -76,6 +76,11 @@ Set the following environment variables on the server (do not commit them):
 - `SMTP_FROM`
 - `INTEREST_TO` (optional, defaults to `hello@entazis.dev`)
 
+### Local SMTP (Mailpit) vs production SMTP (Gmail)
+
+- **Local**: use `docker-compose.local.yml` + `.env.local` (Mailpit captures outgoing emails at `http://localhost:8025`).
+- **Production**: create a `.env` on the server with your real SMTP creds (for Gmail, typically `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, and an App Password as `SMTP_PASS`).
+
 ## Deploy to VPS (nginx)
 
 1. Build on the server (or in CI):
@@ -127,12 +132,24 @@ sudo nginx -t && sudo systemctl reload nginx
 
 ## Docker Compose (host nginx)
 
+### Local (Mailpit)
+
+1. Start the local stack (Mailpit + app):
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
+```
+
+2. App runs on `http://localhost:3002` and Mailpit UI on `http://localhost:8025`.
+
+### Production
+
 1. Create a `.env` file for SMTP secrets (see `.env.example`).
 
 2. Build and run:
 
 ```bash
-docker compose up -d --build
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 ```
 
 ## Quick rsync deploy (optional)
