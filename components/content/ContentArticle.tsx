@@ -13,19 +13,17 @@ export async function ContentArticle({ item }: { item: ContentItem }) {
     <article className="min-w-0">
       <ArticleJsonLd item={item} />
       <header className="space-y-3">
-        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-          <span className="rounded-full bg-slate-100 px-2 py-1 font-medium text-slate-700 dark:bg-slate-900 dark:text-slate-200">
-            {item.type}
-          </span>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+          <span className="tag">{item.type}</span>
           <span aria-hidden="true">·</span>
           <time dateTime={item.publishedAt}>{formatDate(item.publishedAt)}</time>
           <span aria-hidden="true">·</span>
           <span>{item.readingTime.text}</span>
         </div>
-        <h1 className="text-balance text-3xl font-semibold tracking-tight">
+        <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           {item.title}
         </h1>
-        <p className="max-w-2xl text-pretty text-slate-600 dark:text-slate-300">
+        <p className="max-w-2xl text-pretty text-lg text-muted-foreground">
           {item.excerpt}
         </p>
         {item.coverImage ? (
@@ -33,7 +31,7 @@ export async function ContentArticle({ item }: { item: ContentItem }) {
           <img
             src={item.coverImage}
             alt={`${item.title} cover`}
-            className="mt-4 w-full rounded-2xl border border-slate-200 bg-white object-cover dark:border-slate-800"
+            className="mt-4 w-full rounded-2xl border border-border bg-card object-cover shadow-lg"
           />
         ) : null}
         {item.tags.length ? (
@@ -42,9 +40,9 @@ export async function ContentArticle({ item }: { item: ContentItem }) {
               <Link
                 key={t}
                 href={`/tags/${encodeURIComponent(t)}`}
-                className="text-xs font-medium text-sky-700 hover:underline dark:text-sky-300"
+                className="tag"
               >
-                #{t}
+                {t}
               </Link>
             ))}
           </div>

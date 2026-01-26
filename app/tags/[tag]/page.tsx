@@ -21,29 +21,25 @@ export default async function TagPage({
     <div className="space-y-8">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">#{tag}</h1>
-        <p className="text-slate-600 dark:text-slate-300">
+        <p className="text-muted-foreground">
           {items.length} {items.length === 1 ? "item" : "items"}
         </p>
       </header>
 
       <ul className="space-y-4">
         {items.map((i) => (
-          <li key={`${i.type}:${i.slug}`} className="rounded-xl border border-slate-200 p-5 dark:border-slate-800">
-            <div className="text-xs text-slate-500 dark:text-slate-400">
-              <span className="rounded-full bg-slate-100 px-2 py-1 font-medium text-slate-700 dark:bg-slate-900 dark:text-slate-200">
-                {i.type}
-              </span>
+          <li key={`${i.type}:${i.slug}`} className="post-card">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="tag">{i.type}</span>
               <span aria-hidden="true"> · </span>
               <time dateTime={i.publishedAt}>{formatDate(i.publishedAt)}</time>
             </div>
             <h2 className="mt-2 text-lg font-semibold tracking-tight">
-              <Link href={i.url} className="hover:underline">
+              <Link href={i.url} className="hover:text-link-hover">
                 {i.title}
               </Link>
             </h2>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-              {i.excerpt}
-            </p>
+            <p className="mt-2 text-sm text-muted-foreground">{i.excerpt}</p>
           </li>
         ))}
       </ul>

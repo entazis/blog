@@ -1,14 +1,14 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Lora } from "next/font/google";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ThemeScript } from "@/components/ThemeScript";
 import { siteConfig } from "@/lib/site";
 
-const fontSans = Inter({
+const fontSans = Lora({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap"
@@ -52,16 +52,16 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <a
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-950 focus:px-4 focus:py-2 focus:text-white dark:focus:bg-white dark:focus:text-slate-950"
+          className="skip-link"
           href="#main"
         >
           Skip to content
         </a>
-        <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4">
+        <div className="flex min-h-screen flex-col">
           <SiteHeader />
-          <main id="main" className="flex-1 py-10">
+          <main id="main" className="container flex-1 py-10">
             {children}
           </main>
           <SiteFooter />

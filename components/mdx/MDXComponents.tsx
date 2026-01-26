@@ -19,7 +19,7 @@ function MdxImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
     <img
       {...props}
       className={[
-        "rounded-xl border border-slate-200 dark:border-slate-800",
+        "rounded-xl border border-border bg-card shadow-sm",
         props.className
       ]
         .filter(Boolean)
@@ -33,7 +33,7 @@ export const mdxComponents = {
     const href = String(props?.href ?? "");
     if (href.startsWith("/")) {
       return (
-        <Link href={href} className="text-sky-700 hover:underline dark:text-sky-300">
+        <Link href={href} className="text-link hover:text-link-hover">
           {props.children}
         </Link>
       );
@@ -42,7 +42,7 @@ export const mdxComponents = {
       <ExternalLink
         {...props}
         className={[
-          "text-sky-700 hover:underline dark:text-sky-300",
+          "text-link hover:text-link-hover",
           props.className
         ]
           .filter(Boolean)

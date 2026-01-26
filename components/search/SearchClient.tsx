@@ -67,7 +67,7 @@ export function SearchClient() {
     <div className="space-y-8">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Search</h1>
-        <p className="text-slate-600 dark:text-slate-300">
+        <p className="text-muted-foreground">
           Type to search titles, excerpts, and tags.
         </p>
       </header>
@@ -81,9 +81,9 @@ export function SearchClient() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="e.g. nextjs mdx nginx"
-          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm shadow-slate-900/5 outline-none ring-sky-500 focus:ring-2 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
+          className="focus-ring w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground shadow-sm"
         />
-        <div className="text-xs text-slate-500 dark:text-slate-400">
+        <div className="text-xs text-muted-foreground">
           {error
             ? `Failed to load index: ${error}`
             : index
@@ -93,38 +93,30 @@ export function SearchClient() {
       </div>
 
       <section className="space-y-3">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
           Results ({results.length})
         </h2>
         <ul className="space-y-4">
           {results.map((r) => (
-            <li key={`${r.type}:${r.slug}`} className="rounded-xl border border-slate-200 p-5 dark:border-slate-800">
-              <div className="text-xs text-slate-500 dark:text-slate-400">
-                <span className="rounded-full bg-slate-100 px-2 py-1 font-medium text-slate-700 dark:bg-slate-900 dark:text-slate-200">
-                  {r.type}
-                </span>
+            <li key={`${r.type}:${r.slug}`} className="post-card">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="tag">{r.type}</span>
                 <span aria-hidden="true"> · </span>
                 <time dateTime={r.publishedAt}>
                   {new Date(r.publishedAt).toLocaleDateString()}
                 </time>
               </div>
               <div className="mt-2">
-                <Link href={r.url} className="text-lg font-semibold tracking-tight hover:underline">
+                <Link href={r.url} className="text-lg font-semibold tracking-tight hover:text-link-hover">
                   {r.title}
                 </Link>
               </div>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                {r.excerpt}
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{r.excerpt}</p>
               {r.tags.length ? (
                 <div className="mt-3 flex flex-wrap gap-2">
                   {r.tags.map((t) => (
-                    <Link
-                      key={t}
-                      href={`/tags/${encodeURIComponent(t)}`}
-                      className="text-xs font-medium text-sky-700 hover:underline dark:text-sky-300"
-                    >
-                      #{t}
+                    <Link key={t} href={`/tags/${encodeURIComponent(t)}`} className="tag">
+                      {t}
                     </Link>
                   ))}
                 </div>
