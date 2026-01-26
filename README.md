@@ -108,24 +108,31 @@ This keeps nginx on the host and runs the app in a container.
 docker build -t entazis-blog .
 ```
 
-2. Run the container with your SMTP env vars:
+2. Create a `.env` file for SMTP secrets (see `.env.example`).
+
+3. Run the container with your `.env` file:
 
 ```bash
 docker run -d --name entazis-blog \
+  --env-file .env \
   -p 3000:3000 \
-  -e SMTP_HOST=your-smtp-host \
-  -e SMTP_PORT=587 \
-  -e SMTP_USER=your-smtp-user \
-  -e SMTP_PASS=your-smtp-pass \
-  -e SMTP_FROM=hello@entazis.dev \
-  -e INTEREST_TO=hello@entazis.dev \
   entazis-blog
 ```
 
-3. Keep nginx pointing to `http://127.0.0.1:3000` (see `nginx/blog.entazis.dev.conf`) and reload it:
+4. Keep nginx pointing to `http://127.0.0.1:3000` (see `nginx/blog.entazis.dev.conf`) and reload it:
 
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
+```
+
+## Docker Compose (host nginx)
+
+1. Create a `.env` file for SMTP secrets (see `.env.example`).
+
+2. Build and run:
+
+```bash
+docker compose up -d --build
 ```
 
 ## Quick rsync deploy (optional)

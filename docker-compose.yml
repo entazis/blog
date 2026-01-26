@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  blog:
+    image: entazis-blog
+    container_name: entazis-blog
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
