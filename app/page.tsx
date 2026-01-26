@@ -127,7 +127,7 @@ export default async function HomePage() {
       <section className="rounded-2xl border border-border bg-card px-6 py-10 text-center">
         <h2 className="text-2xl font-semibold tracking-tight">Updates, soon</h2>
         <p className="mt-2 text-muted-foreground">
-          Still building this. Add your email if you'd like a note when it's ready.
+          Still building this. Add your email if you&apos;d like a note when it&apos;s ready.
         </p>
         <InterestForm />
       </section>

@@ -2,10 +2,26 @@ version: "3.9"
 
 services:
   blog:
+    build:
+      context: .
     image: entazis-blog
     container_name: entazis-blog
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3002:3000"
     env_file:
       - .env
+    depends_on:
+      - mailpit
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: entazis-mailpit
+    restart: unless-stopped
+    environment:
+      MP_SMTP_AUTH_FILE: /data/smtp-auth.txt
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+    ports:
+      - "8025:8025"
+    volumes:
+      - ./smtp-auth.txt:/data/smtp-auth.txt:ro
