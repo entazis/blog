@@ -1,17 +1,22 @@
 import Link from "next/link";
 
+import { addLocalePrefix, type Locale } from "@/lib/i18n";
+import { t } from "@/lib/messages";
 import { siteConfig } from "@/lib/site";
 
-export function SiteFooter() {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const homeHref = addLocalePrefix(locale, "/");
+  const rssHref = addLocalePrefix(locale, "/rss.xml");
+
   return (
     <footer className="border-t border-border py-10 text-sm text-muted-foreground">
       <div className="container flex flex-col gap-6">
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
           <div className="space-y-2">
-            <Link href="/" className="font-mono text-sm font-semibold text-foreground">
+            <Link href={homeHref} className="font-mono text-sm font-semibold text-foreground">
               {siteConfig.title}
             </Link>
-            <p>{siteConfig.tagline}</p>
+            <p>{t(locale, "siteTagline")}</p>
           </div>
           <div className="flex items-center gap-4 text-muted-foreground">
             <a
@@ -38,7 +43,7 @@ export function SiteFooter() {
             </a>
             <Link
               className="focus-ring rounded-md p-1 transition hover:text-foreground"
-              href={siteConfig.social.rss}
+              href={rssHref}
               aria-label="RSS"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
@@ -48,7 +53,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="text-xs text-muted-foreground/80">
-          © {new Date().getFullYear()} {siteConfig.author.name}. All rights reserved.
+          {t(locale, "footerRights", { year: new Date().getFullYear(), name: siteConfig.author.name })}
         </div>
       </div>
     </footer>

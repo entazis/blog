@@ -4,6 +4,7 @@ import { mdxComponents } from "@/components/mdx/MDXComponents";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 import { formatDate } from "@/lib/dates";
 import type { ContentItem } from "@/lib/content";
+import { addLocalePrefix, stripLocalePrefix } from "@/lib/i18n";
 import { renderMdx } from "@/lib/mdx";
 
 export async function ContentArticle({ item }: { item: ContentItem }) {
@@ -39,7 +40,7 @@ export async function ContentArticle({ item }: { item: ContentItem }) {
             {item.tags.map((t) => (
               <Link
                 key={t}
-                href={`/tags/${encodeURIComponent(t)}`}
+                href={addLocalePrefix(stripLocalePrefix(item.url).locale, `/tags/${encodeURIComponent(t)}`)}
                 className="tag"
               >
                 {t}
