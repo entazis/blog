@@ -7,6 +7,10 @@ import { siteConfig } from "@/lib/site";
 export function SiteFooter({ locale }: { locale: Locale }) {
   const homeHref = addLocalePrefix(locale, "/");
   const rssHref = addLocalePrefix(locale, "/rss.xml");
+  const authorName =
+    locale === "hu"
+      ? `${siteConfig.author.familyName} ${siteConfig.author.givenName}`
+      : siteConfig.author.name;
 
   return (
     <footer className="border-t border-border py-10 text-sm text-muted-foreground">
@@ -53,7 +57,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
         <div className="text-xs text-muted-foreground/80">
-          {t(locale, "footerRights", { year: new Date().getFullYear(), name: siteConfig.author.name })}
+          {t(locale, "footerRights", { year: new Date().getFullYear(), name: authorName })}
         </div>
       </div>
     </footer>
