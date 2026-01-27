@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
@@ -32,7 +33,8 @@ export default function RootPage() {
       <p className="text-muted-foreground">Redirecting…</p>
       <noscript>
         <p>
-          JavaScript is disabled. Continue to <a href="/en">English</a> or <a href="/hu">Magyar</a>.
+          JavaScript is disabled. Continue to <Link href="/en">English</Link> or{" "}
+          <Link href="/hu">Magyar</Link>.
         </p>
       </noscript>
     </main>
