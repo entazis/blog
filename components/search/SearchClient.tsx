@@ -3,6 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
+import { addLocalePrefix, type Locale } from "@/lib/i18n";
+import { t } from "@/lib/messages";
+
 type SearchIndexItem = {
   type: "posts" | "notes" | "reviews";
   slug: string;
@@ -22,14 +25,14 @@ function normalize(s: string) {
   return s.toLowerCase().trim();
 }
 
-export function SearchClient() {
+export function SearchClient({ locale }: { locale: Locale }) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<SearchIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/search-index.json")
+    fetch(addLocalePrefix(locale, "/search-index.json"))
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((data: SearchIndex) => {
         if (cancelled) return;
@@ -42,7 +45,7 @@ export function SearchClient() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [locale]);
 
   const results = useMemo(() => {
     const q = normalize(query);
@@ -66,35 +69,35 @@ export function SearchClient() {
   return (
     <div className="space-y-8">
       <header className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight">Search</h1>
-        <p className="text-muted-foreground">
-          Type to search titles, excerpts, and tags.
-        </p>
+        <h1 className="text-3xl font-semibold tracking-tight">{t(locale, "searchTitle")}</h1>
+        <p className="text-muted-foreground">{t(locale, "searchDescription")}</p>
       </header>
 
       <div className="space-y-3">
         <label className="text-sm font-medium" htmlFor="q">
-          Query
+          {t(locale, "searchQueryLabel")}
         </label>
         <input
           id="q"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="e.g. nextjs mdx nginx"
+          placeholder={t(locale, "searchPlaceholder")}
           className="focus-ring w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground shadow-sm"
         />
         <div className="text-xs text-muted-foreground">
-          {error
-            ? `Failed to load index: ${error}`
-            : index
-              ? `Index generated ${new Date(index.generatedAt).toLocaleString()}`
-              : "Loading index…"}
+          {error ? (
+            t(locale, "searchIndexFailed", { error })
+          ) : index ? (
+            t(locale, "searchIndexGenerated", { value: new Date(index.generatedAt) })
+          ) : (
+            t(locale, "searchIndexLoading")
+          )}
         </div>
       </div>
 
       <section className="space-y-3">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          Results ({results.length})
+          {t(locale, "searchResultsLabel", { count: results.length })}
         </h2>
         <ul className="space-y-4">
           {results.map((r) => (
@@ -115,7 +118,11 @@ export function SearchClient() {
               {r.tags.length ? (
                 <div className="mt-3 flex flex-wrap gap-2">
                   {r.tags.map((t) => (
-                    <Link key={t} href={`/tags/${encodeURIComponent(t)}`} className="tag">
+                    <Link
+                      key={t}
+                      href={addLocalePrefix(locale, `/tags/${encodeURIComponent(t)}`)}
+                      className="tag"
+                    >
                       {t}
                     </Link>
                   ))}

@@ -1,4 +1,4 @@
-import { readFile, readdir } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 import matter from "gray-matter";
@@ -6,6 +6,7 @@ import readingTime from "reading-time";
 import { cache } from "react";
 import { z } from "zod";
 
+import { addLocalePrefix, type Locale } from "@/lib/i18n";
 import { extractToc, type TocItem } from "@/lib/mdx";
 
 export type ContentType = "posts" | "notes" | "reviews";
@@ -35,6 +36,7 @@ export type ContentItem = ContentListItem & {
 
 const ContentFrontmatterSchema = z.object({
   slug: z.string().min(1),
+  locale: z.string().min(2).optional(),
   title: z.string().min(1),
   excerpt: z.string().min(1),
   tags: z.array(z.string().min(1)).optional().default([]),
@@ -79,17 +81,24 @@ async function listMdxFiles(dir: string): Promise<string[]> {
 
 async function loadOneFromFile(
   type: ContentType,
+  locale: Locale,
   filePath: string
 ): Promise<ContentItem> {
   const raw = await readFile(filePath, "utf8");
   const parsed = matter(raw);
   const fm = ContentFrontmatterSchema.parse(parsed.data);
 
+  if (fm.locale && fm.locale !== locale) {
+    throw new Error(
+      `Frontmatter locale mismatch for ${type}:${fm.slug}: expected "${locale}", got "${fm.locale}"`
+    );
+  }
+
   assertIsoDate(`${type}:${fm.slug}.publishedAt`, fm.publishedAt);
   if (fm.updatedAt) assertIsoDate(`${type}:${fm.slug}.updatedAt`, fm.updatedAt);
 
   const base = typeToBasePath(type);
-  const url = `${base}/${fm.slug}`;
+  const url = addLocalePrefix(locale, `${base}/${fm.slug}`);
 
   const rt = readingTime(parsed.content);
   const toc = extractToc(parsed.content);
@@ -115,18 +124,37 @@ async function loadOneFromFile(
   };
 }
 
-export const getAllContent = cache(async (): Promise<ContentListItem[]> => {
+function localeTypeDir(locale: Locale, type: ContentType): string {
+  return path.join(CONTENT_ROOT, locale, type);
+}
+
+function localeSlugPath(locale: Locale, type: ContentType, slug: string): string {
+  return path.join(localeTypeDir(locale, type), `${slug}.mdx`);
+}
+
+export const hasContentBySlug = cache(
+  async (type: ContentType, slug: string, locale: Locale): Promise<boolean> => {
+    try {
+      await access(localeSlugPath(locale, type, slug));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+);
+
+export const getAllContent = cache(async (locale: Locale): Promise<ContentListItem[]> => {
   const types: ContentType[] = ["posts", "notes", "reviews"];
   const all = await Promise.all(
     types.map(async (type) => {
-      const dir = path.join(CONTENT_ROOT, type);
+      const dir = localeTypeDir(locale, type);
       let files: string[] = [];
       try {
         files = await listMdxFiles(dir);
       } catch {
         return [] as ContentItem[];
       }
-      return Promise.all(files.map((f) => loadOneFromFile(type, f)));
+      return Promise.all(files.map((f) => loadOneFromFile(type, locale, f)));
     })
   );
 
@@ -137,28 +165,28 @@ export const getAllContent = cache(async (): Promise<ContentListItem[]> => {
 });
 
 export const getAllContentByType = cache(
-  async (type: ContentType): Promise<ContentListItem[]> => {
-    const all = await getAllContent();
+  async (type: ContentType, locale: Locale): Promise<ContentListItem[]> => {
+    const all = await getAllContent(locale);
     return all.filter((i) => i.type === type);
   }
 );
 
 export const getContentBySlug = cache(
-  async (type: ContentType, slug: string): Promise<ContentItem> => {
-    const filePath = path.join(CONTENT_ROOT, type, `${slug}.mdx`);
-    return loadOneFromFile(type, filePath);
+  async (type: ContentType, slug: string, locale: Locale): Promise<ContentItem> => {
+    const filePath = localeSlugPath(locale, type, slug);
+    return loadOneFromFile(type, locale, filePath);
   }
 );
 
 export const getAllSlugsByType = cache(
-  async (type: ContentType): Promise<string[]> => {
-    const list = await getAllContentByType(type);
+  async (type: ContentType, locale: Locale): Promise<string[]> => {
+    const list = await getAllContentByType(type, locale);
     return list.map((i) => i.slug);
   }
 );
 
-export const getTagCounts = cache(async (): Promise<Map<string, number>> => {
-  const all = await getAllContent();
+export const getTagCounts = cache(async (locale: Locale): Promise<Map<string, number>> => {
+  const all = await getAllContent(locale);
   const counts = new Map<string, number>();
   for (const item of all) {
     for (const tag of item.tags) {
@@ -168,14 +196,14 @@ export const getTagCounts = cache(async (): Promise<Map<string, number>> => {
   return counts;
 });
 
-export const getAllTags = cache(async (): Promise<string[]> => {
-  const counts = await getTagCounts();
+export const getAllTags = cache(async (locale: Locale): Promise<string[]> => {
+  const counts = await getTagCounts(locale);
   return [...counts.keys()].sort((a, b) => a.localeCompare(b));
 });
 
 export const getContentByTag = cache(
-  async (tag: string): Promise<ContentListItem[]> => {
-    const all = await getAllContent();
+  async (tag: string, locale: Locale): Promise<ContentListItem[]> => {
+    const all = await getAllContent(locale);
     return all.filter((i) => i.tags.includes(tag));
   }
 );

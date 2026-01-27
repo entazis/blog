@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import type { ContentItem } from "@/lib/content";
+import { addLocalePrefix, type Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
 
 export function absoluteUrl(pathname: string): string {
@@ -11,14 +12,28 @@ export function canonicalFor(item: Pick<ContentItem, "canonicalUrl" | "url">): s
   return item.canonicalUrl ?? absoluteUrl(item.url);
 }
 
-export function metadataForContent(item: ContentItem): Metadata {
+type TranslationAvailability = Partial<Record<Locale, boolean>>;
+
+export function metadataForContent(
+  item: ContentItem,
+  opts?: { locale?: Locale; translations?: TranslationAvailability }
+): Metadata {
   const canonical = canonicalFor(item);
   const ogImage = item.coverImage ? absoluteUrl(item.coverImage) : undefined;
+
+  const languages: Record<string, string> = {};
+  if (opts?.translations) {
+    for (const [loc, exists] of Object.entries(opts.translations) as Array<[Locale, boolean]>) {
+      if (!exists) continue;
+      const pathname = addLocalePrefix(loc, `/${item.type}/${item.slug}`);
+      languages[loc] = absoluteUrl(pathname);
+    }
+  }
 
   return {
     title: item.title,
     description: item.excerpt,
-    alternates: { canonical },
+    alternates: Object.keys(languages).length ? { canonical, languages } : { canonical },
     openGraph: {
       type: "article",
       url: canonical,

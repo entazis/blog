@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { getAllContent, getAllTags } from "../lib/content";
+import { locales } from "../lib/i18n";
 import { siteConfig } from "../lib/site";
 
 function escapeXml(s: string): string {
@@ -17,24 +18,28 @@ async function main() {
   const publicDir = path.join(process.cwd(), "public");
   await mkdir(publicDir, { recursive: true });
 
-  const [items, tags] = await Promise.all([getAllContent(), getAllTags()]);
+  const urls: Array<{ loc: string; lastmod?: string }> = [];
+  for (const locale of locales) {
+    const [items, tags] = await Promise.all([getAllContent(locale), getAllTags(locale)]);
+    urls.push(
+      { loc: `${siteConfig.siteUrl}/${locale}` },
+      { loc: `${siteConfig.siteUrl}/${locale}/posts` },
+      { loc: `${siteConfig.siteUrl}/${locale}/notes` },
+      { loc: `${siteConfig.siteUrl}/${locale}/reviews` },
+      { loc: `${siteConfig.siteUrl}/${locale}/tags` },
+      { loc: `${siteConfig.siteUrl}/${locale}/rss.xml` }
+    );
 
-  const urls: Array<{ loc: string; lastmod?: string }> = [
-    { loc: `${siteConfig.siteUrl}/` },
-    { loc: `${siteConfig.siteUrl}/posts` },
-    { loc: `${siteConfig.siteUrl}/notes` },
-    { loc: `${siteConfig.siteUrl}/reviews` },
-    { loc: `${siteConfig.siteUrl}/tags` },
-    { loc: `${siteConfig.siteUrl}/rss.xml` }
-  ];
+    for (const i of items) {
+      const lastmod = (i.updatedAt ?? i.publishedAt)
+        ? new Date(i.updatedAt ?? i.publishedAt).toISOString()
+        : undefined;
+      urls.push({ loc: `${siteConfig.siteUrl}${i.url}`, lastmod });
+    }
 
-  for (const i of items) {
-    const lastmod = (i.updatedAt ?? i.publishedAt) ? new Date(i.updatedAt ?? i.publishedAt).toISOString() : undefined;
-    urls.push({ loc: `${siteConfig.siteUrl}${i.url}`, lastmod });
-  }
-
-  for (const t of tags) {
-    urls.push({ loc: `${siteConfig.siteUrl}/tags/${encodeURIComponent(t)}` });
+    for (const t of tags) {
+      urls.push({ loc: `${siteConfig.siteUrl}/${locale}/tags/${encodeURIComponent(t)}` });
+    }
   }
 
   const body =

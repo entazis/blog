@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-01-27T11:43:37.325Z",
+  "items": [
+    {
+      "type": "reviews",
+      "slug": "review-clean-code",
+      "title": "Review: Clean Code",
+      "excerpt": "A quick review template to validate the “reviews” content type.",
+      "tags": [
+        "books",
+        "craftsmanship"
+      ],
+      "publishedAt": "2026-01-26T12:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/reviews/review-clean-code",
+      "url": "/en/reviews/review-clean-code"
+    },
+    {
+      "type": "notes",
+      "slug": "til-static-export",
+      "title": "TIL: Next.js static export",
+      "excerpt": "A note about serving a Next.js `out/` folder behind nginx.",
+      "tags": [
+        "nextjs",
+        "nginx"
+      ],
+      "publishedAt": "2026-01-26T11:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/notes/til-static-export",
+      "url": "/en/notes/til-static-export"
+    },
+    {
+      "type": "posts",
+      "slug": "hello-mdx",
+      "title": "Hello MDX",
+      "excerpt": "A quick smoke test post to validate the MDX pipeline.",
+      "tags": [
+        "nextjs",
+        "mdx",
+        "ssg"
+      ],
+      "publishedAt": "2026-01-26T10:00:00.000Z",
+      "updatedAt": "2026-01-26T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/hello-mdx",
+      "coverImage": "/images/covers/hello-mdx.png",
+      "url": "/en/posts/hello-mdx"
+    }
+  ]
+}

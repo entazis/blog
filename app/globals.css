@@ -148,6 +148,17 @@ pre code {
   display: grid;
 }
 
+/* Apply Shiki token colors (rehype-pretty-code multi-theme) */
+pre[data-theme] code,
+pre[data-theme] code span {
+  color: var(--shiki-light) !important;
+}
+
+.dark pre[data-theme] code,
+.dark pre[data-theme] code span {
+  color: var(--shiki-dark) !important;
+}
+
 .rehype-code-title {
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;

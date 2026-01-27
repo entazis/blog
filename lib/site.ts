@@ -4,6 +4,8 @@ export const siteConfig = {
     "I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.",
   siteUrl: "https://blog.entazis.dev",
   author: {
+    givenName: "Bence",
+    familyName: "Szabó",
     name: "Bence Szabó",
     url: "https://entazis.dev"
   },

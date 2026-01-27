@@ -3,8 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { JetBrains_Mono, Lora } from "next/font/google";
 
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
+import { LanguageScript } from "@/components/LanguageScript";
 import { ThemeScript } from "@/components/ThemeScript";
 import { siteConfig } from "@/lib/site";
 
@@ -47,24 +46,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontSans.variable} ${fontMono.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${fontSans.variable} ${fontMono.variable}`}
+    >
       <head>
         <ThemeScript />
+        <LanguageScript />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <a
-          className="skip-link"
-          href="#main"
-        >
-          Skip to content
-        </a>
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main id="main" className="container flex-1 py-10">
-            {children}
-          </main>
-          <SiteFooter />
-        </div>
+        {children}
       </body>
     </html>
   );

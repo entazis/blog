@@ -1,137 +1,41 @@
-import Link from "next/link";
+"use client";
 
-import { getAllContent } from "@/lib/content";
-import { formatDate } from "@/lib/dates";
-import { siteConfig } from "@/lib/site";
-import InterestForm from "@/components/InterestForm";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default async function HomePage() {
-  const all = await getAllContent();
-  const [latest, ...rest] = all;
-  const recent = rest.slice(0, 3);
+import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
+
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function detectBrowserLocale(): Locale {
+  if (typeof navigator === "undefined") return defaultLocale;
+  const langs = Array.isArray(navigator.languages) ? navigator.languages : [];
+  const candidates = [navigator.language, ...langs].filter(Boolean) as string[];
+  return candidates.some((l) => l.toLowerCase().startsWith("hu")) ? "hu" : defaultLocale;
+}
+
+export default function RootPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const cookieLocale = readCookie("locale");
+    const target = isLocale(cookieLocale ?? "") ? (cookieLocale as Locale) : detectBrowserLocale();
+    router.replace(`/${target}`);
+  }, [router]);
 
   return (
-    <div className="space-y-16">
-      <section className="space-y-6">
-        <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
-          Hi, I&apos;m <span className="gradient-text">Bence</span>
-        </h1>
-        <p className="max-w-2xl text-pretty text-lg text-muted-foreground">
-          {siteConfig.description}
+    <main className="container py-10">
+      <p className="text-muted-foreground">Redirecting…</p>
+      <noscript>
+        <p>
+          JavaScript is disabled. Continue to <a href="/en">English</a> or <a href="/hu">Magyar</a>.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Link
-            href="/posts"
-            className="focus-ring inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-          >
-            Read the blog
-            <span aria-hidden="true">→</span>
-          </Link>
-          <Link
-            href="/tags"
-            className="focus-ring inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/60"
-          >
-            Browse by topic
-          </Link>
-        </div>
-      </section>
-
-      <section className="space-y-6">
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-            Latest post
-          </p>
-          <Link
-            href="/posts"
-            className="text-sm font-semibold text-link hover:text-link-hover"
-          >
-            View all →
-          </Link>
-        </div>
-        {latest ? (
-          <article className="post-card">
-            {latest.coverImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={latest.coverImage}
-                alt={`${latest.title} cover`}
-                className="mb-6 aspect-[16/9] w-full rounded-lg object-cover"
-              />
-            ) : null}
-            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-              <span className="tag">{latest.type}</span>
-              <span aria-hidden="true">·</span>
-              <time dateTime={latest.publishedAt}>
-                {formatDate(latest.publishedAt)}
-              </time>
-            </div>
-            <h2 className="mt-3 text-pretty text-2xl font-semibold tracking-tight">
-              <Link href={latest.url} className="hover:text-link-hover">
-                {latest.title}
-              </Link>
-            </h2>
-            <p className="mt-2 text-base text-muted-foreground">{latest.excerpt}</p>
-            {latest.tags.length > 0 ? (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {latest.tags.slice(0, 5).map((t) => (
-                  <Link key={t} href={`/tags/${encodeURIComponent(t)}`} className="tag">
-                    {t}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-          </article>
-        ) : null}
-      </section>
-
-      <section className="space-y-6">
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-            Recent posts
-          </p>
-          <Link
-            href="/posts"
-            className="text-sm font-semibold text-link hover:text-link-hover"
-          >
-            View all →
-          </Link>
-        </div>
-        <ul className="grid gap-6 md:grid-cols-3">
-          {recent.map((item) => (
-            <li key={`${item.type}:${item.slug}`} className="post-card">
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span className="tag">{item.type}</span>
-                <span aria-hidden="true">·</span>
-                <time dateTime={item.publishedAt}>{formatDate(item.publishedAt)}</time>
-              </div>
-              <h3 className="mt-3 text-pretty text-lg font-semibold leading-snug tracking-tight">
-                <Link href={item.url} className="hover:text-link-hover">
-                  {item.title}
-                </Link>
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">{item.excerpt}</p>
-              {item.tags.length > 0 ? (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {item.tags.slice(0, 3).map((t) => (
-                    <Link key={t} href={`/tags/${encodeURIComponent(t)}`} className="tag">
-                      {t}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="rounded-2xl border border-border bg-card px-6 py-10 text-center">
-        <h2 className="text-2xl font-semibold tracking-tight">Updates, soon</h2>
-        <p className="mt-2 text-muted-foreground">
-          Still building this. Add your email if you&apos;d like a note when it&apos;s ready.
-        </p>
-        <InterestForm />
-      </section>
-    </div>
+      </noscript>
+    </main>
   );
 }
 

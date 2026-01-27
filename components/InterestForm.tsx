@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 
+import type { Locale } from "@/lib/i18n";
+import { t } from "@/lib/messages";
+
 const mailToAddress = "hello@entazis.dev";
 const subject = "Blog updates interest";
 
-export default function InterestForm() {
+export default function InterestForm({ locale }: { locale: Locale }) {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -56,11 +59,11 @@ export default function InterestForm() {
           type="submit"
           className="focus-ring inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
         >
-          Notify me
+          {t(locale, "interestNotifyMe")}
         </button>
       </form>
       <p className="mt-3 text-xs text-muted-foreground">
-        No emails yet. Just collecting interest.
+        {t(locale, "interestNoEmailsYet")}
       </p>
     </>
   );
