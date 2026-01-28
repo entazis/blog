@@ -1,21 +1,25 @@
 # Entázis Blog
 
-A fast, SEO-friendly **static** blog built with **Next.js (App Router)** and **MDX-in-Git**. It exports to an `out/` folder so you can host it directly behind **nginx** on your VPS (no Node server required).
+A fast, SEO-friendly **static** blog built with **Next.js (App Router)** and **MDX-in-Git**.
+
+This project is configured for **static export** (`output: "export"`), so production builds generate an `out/` folder that can be hosted on any static file host (no Node server required).
 
 ## Features
 
-- **Content types**: posts, notes, reviews (MDX in `content/`)
-- **Discovery**: tags (`/tags`) and build-time search (`/search`)
-- **SEO**: canonical URLs, OpenGraph metadata, JSON-LD `Article`, `sitemap.xml`, `robots.txt`, `rss.xml`
+- **Content types**: posts, notes, reviews (MDX in `content/<locale>/…`)
+- **i18n**: locale-prefixed routes (`/en`, `/hu`) with locale-specific content
+- **Discovery**: tags and build-time search index
+- **SEO**: canonical URLs, OpenGraph metadata, JSON-LD `Article`, `sitemap.xml`, `robots.txt`, RSS
 - **Reading UX**: typography, dark mode, TOC, reading time, syntax highlighting
+- **Optional client-side metrics**: Web Vitals + basic interaction tracking (configurable via env)
 
 ## Requirements
 
-- Node.js + npm (local build)
+- Node.js + npm
 
 ## Local development
 
-Install deps:
+Install dependencies:
 
 ```bash
 npm install
@@ -27,60 +31,79 @@ Run dev server:
 npm run dev
 ```
 
+## Project structure
+
+- **App Router**: `app/`
+- **Root redirect**: `/` client-redirects to `/en` or `/hu` (cookie + browser language)
+- **Locale routes**: `app/[locale]/…` (supported locales are in `lib/i18n.ts`)
+- **Content**: `content/<locale>/{posts,notes,reviews}/*.mdx`
+- **Build-time generators** (run automatically before `next build`): `scripts/`
+
 ## Writing content
 
 Add MDX files under:
 
-- `content/posts/*.mdx` → `/posts/[slug]`
-- `content/notes/*.mdx` → `/notes/[slug]`
-- `content/reviews/*.mdx` → `/reviews/[slug]`
+- `content/en/posts/*.mdx` → `/en/posts/[slug]`
+- `content/en/notes/*.mdx` → `/en/notes/[slug]`
+- `content/en/reviews/*.mdx` → `/en/reviews/[slug]`
+- `content/hu/...` → same paths under `/hu`
 
-Frontmatter fields (recommended):
+Frontmatter fields:
 
-- `slug` (required): `my-post`
-- `title` (required)
-- `excerpt` (required)
-- `tags` (optional array): `[nextjs, mdx]`
-- `publishedAt` (required ISO date)
-- `updatedAt` (optional ISO date)
-- `canonicalUrl` (optional)
+- `slug` (**required**): `my-post`
+- `title` (**required**)
+- `excerpt` (**required**)
+- `publishedAt` (**required** ISO date string)
+- `tags` (optional array): `["nextjs", "mdx"]` (defaults to `[]`)
+- `updatedAt` (optional ISO date string)
+- `canonicalUrl` (optional URL)
 - `coverImage` (optional): path under `public/`, e.g. `/images/covers/foo.png`
+- `locale` (optional): if present, it must match the folder locale (e.g. `en`)
 
 ## Build (static export)
 
-This repo is configured for static export (`output: 'export'`). Build generates:
+`npm run build` runs a `prebuild` step that generates SEO + search artifacts into `public/`, then runs `next build` to export the site to `out/`.
 
-- `public/search-index.json`
+Generated files:
+
+- `public/en/search-index.json`, `public/hu/search-index.json`
 - `public/sitemap.xml`
 - `public/robots.txt`
-- `public/rss.xml`
+- `public/en/rss.xml`, `public/hu/rss.xml`
 
-Then exports the site to `out/`.
-
-```bash
-npm run build
-```
-
-## Deploy to VPS (nginx)
-
-1. Build locally or in CI:
+Then exports the site to `out/`:
 
 ```bash
 npm run build
 ```
 
-1. Copy the `out/` folder contents to your VPS web root, e.g.:
+## Metrics tracking (optional)
 
-- `/var/www/blog.entazis.dev/`
+Client-side metrics collection is enabled by default and is configured via `NEXT_PUBLIC_…` env vars.
 
-1. Configure nginx. A sample server block is in [`nginx/blog.entazis.dev.conf`](nginx/blog.entazis.dev.conf).
+To configure locally, copy `.env.example` to `.env.local` and adjust values.
 
-1. Reload nginx:
+To disable metrics entirely:
 
 ```bash
-sudo nginx -t && sudo systemctl reload nginx
+NEXT_PUBLIC_METRICS_ENABLED=false
 ```
 
-## Quick rsync deploy (optional)
+## Deployment
 
-There’s a helper script you can customize: [`scripts/deploy-rsync.sh`](scripts/deploy-rsync.sh).
+Serve the contents of `out/` as static files (any static host works: nginx, Caddy, S3/CloudFront, Cloudflare Pages, GitHub Pages, etc.).
+
+Static export notes:
+
+- `next/image` optimization is disabled (`images.unoptimized = true`) to support pure static hosting.
+- SEO artifacts and feeds use the base URL from `lib/site.ts` (`siteConfig.siteUrl`). Update it if you fork/rename the site.
+
+## Useful scripts
+
+- `npm run lint`
+- `npm run typecheck`
+- `npm run format`
+
+## License
+
+MIT (see `LICENSE`).
