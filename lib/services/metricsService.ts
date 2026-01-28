@@ -17,7 +17,9 @@ import type {
  */
 const DEFAULT_CONFIG: MetricsConfig = {
   enabled: true,
-  apiUrl: "https://entazis.dev/api/track",
+  // Prefer same-origin so each site can proxy `/api/track` to the central metrics-api.
+  // This avoids cross-origin requests and matches how other apps in this repo send metrics.
+  apiUrl: "/api/track",
   siteName: "blog.entazis.dev",
   sampleRate: 1.0,
   batchSize: 10,
