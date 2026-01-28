@@ -5,7 +5,18 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>hu</language>
-    <lastBuildDate>Wed, 28 Jan 2026 12:55:14 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jan 2026 13:49:47 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/hu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flowmodoro: Pomodoro technikától a lendületig</title>
+      <link>https://blog.entazis.dev/hu/posts/from-pomodoro-to-flowmodoro</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/hu/posts/from-pomodoro-to-flowmodoro</guid>
+      <pubDate>Wed, 28 Jan 2026 10:00:00 GMT</pubDate>
+      <category>időmenedzsment</category>
+      <category>fókusz</category>
+      <category>flow</category>
+      <category>pomodoro</category>
+      <description><![CDATA[A Pomodoro megtanított pihenni. A flow pedig arra, mikor *nem* szabad megállni.]]></description>
+    </item>
   </channel>
 </rss>
