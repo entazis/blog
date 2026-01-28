@@ -5,7 +5,7 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Jan 2026 11:28:28 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jan 2026 12:55:14 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flowmodoro: From Pomodoro to Momentum</title>
@@ -18,34 +18,6 @@
       <category>pomodoro</category>
       <category>time-management</category>
       <description><![CDATA[Keep Pomodoro’s proportional breaks, but replace rigid timers with a simple rule: work until momentum fades, then rest.]]></description>
-    </item>
-    <item>
-      <title>Review: Clean Code</title>
-      <link>https://blog.entazis.dev/en/reviews/review-clean-code</link>
-      <guid isPermaLink="true">https://blog.entazis.dev/en/reviews/review-clean-code</guid>
-      <pubDate>Mon, 26 Jan 2026 12:00:00 GMT</pubDate>
-      <category>books</category>
-      <category>craftsmanship</category>
-      <description><![CDATA[A quick review template to validate the “reviews” content type.]]></description>
-    </item>
-    <item>
-      <title>TIL: Next.js static export</title>
-      <link>https://blog.entazis.dev/en/notes/til-static-export</link>
-      <guid isPermaLink="true">https://blog.entazis.dev/en/notes/til-static-export</guid>
-      <pubDate>Mon, 26 Jan 2026 11:00:00 GMT</pubDate>
-      <category>nextjs</category>
-      <category>nginx</category>
-      <description><![CDATA[A note about serving a Next.js `out/` folder behind nginx.]]></description>
-    </item>
-    <item>
-      <title>Hello MDX</title>
-      <link>https://blog.entazis.dev/en/posts/hello-mdx</link>
-      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/hello-mdx</guid>
-      <pubDate>Mon, 26 Jan 2026 10:00:00 GMT</pubDate>
-      <category>nextjs</category>
-      <category>mdx</category>
-      <category>ssg</category>
-      <description><![CDATA[A quick smoke test post to validate the MDX pipeline.]]></description>
     </item>
   </channel>
 </rss>

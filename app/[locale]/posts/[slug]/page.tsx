@@ -13,6 +13,9 @@ export async function generateStaticParams() {
     const slugs = await getAllSlugsByType("posts", locale);
     for (const slug of slugs) all.push({ locale, slug });
   }
+  // When there are no posts yet (or all are drafts), Next.js static export
+  // still requires at least one param for this dynamic route.
+  if (all.length === 0) return [{ locale: defaultLocale, slug: "__placeholder__" }];
   return all;
 }
 
@@ -23,7 +26,13 @@ export async function generateMetadata({
 }) {
   const { locale: rawLocale, slug } = await params;
   const locale = normalizeLocale(rawLocale);
-  const item = await getContentBySlug("posts", slug, locale);
+  if (slug === "__placeholder__") return {};
+  let item;
+  try {
+    item = await getContentBySlug("posts", slug, locale);
+  } catch {
+    return {};
+  }
   const hasEn = await hasContentBySlug("posts", slug, "en");
   const hasHu = await hasContentBySlug("posts", slug, "hu");
   return metadataForContent(item, { locale, translations: { en: hasEn, hu: hasHu } });
