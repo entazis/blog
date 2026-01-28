@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Lora } from "next/font/google";
 
 import { LanguageScript } from "@/components/LanguageScript";
+import { MetricsProvider } from "@/components/MetricsProvider";
 import { ThemeScript } from "@/components/ThemeScript";
 import { siteConfig } from "@/lib/site";
 
@@ -56,7 +57,7 @@ export default function RootLayout({
         <LanguageScript />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        {children}
+        <MetricsProvider>{children}</MetricsProvider>
       </body>
     </html>
   );
