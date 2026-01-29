@@ -48,6 +48,89 @@ class MetricsService {
   }
 
   /**
+   * Moderate-privacy attribution labels (guarded for cardinality).
+   * - referrer_domain: hostname only, "direct" if none
+   * - utm_source / utm_medium / utm_campaign: allowlisted + normalized
+   */
+  private getAttributionLabels(): Record<string, string> {
+    if (typeof window === "undefined") return {};
+
+    const normalize = (raw: string, maxLen = 48): string | null => {
+      const v = raw.trim().toLowerCase();
+      if (!v) return null;
+      // Keep labels Prometheus-friendly and reduce cardinality risk.
+      const cleaned = v
+        .replace(/^https?:\/\//, "")
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9._-]/g, "");
+      if (!cleaned) return null;
+      return cleaned.slice(0, maxLen);
+    };
+
+    const allowlistFromEnv = (
+      process.env.NEXT_PUBLIC_METRICS_UTM_ALLOWLIST || ""
+    )
+      .split(",")
+      .map((s) => normalize(s, 48))
+      .filter((s): s is string => Boolean(s));
+
+    const defaultAllowlist = [
+      "direct",
+      "newsletter",
+      "github",
+      "linkedin",
+      "mastodon",
+      "reddit",
+      "hn",
+      "hackernews",
+      "twitter",
+      "x",
+      "google",
+      "bing",
+      "duckduckgo"
+    ];
+
+    const allow = new Set<string>([
+      ...defaultAllowlist.map((s) => s.toLowerCase()),
+      ...allowlistFromEnv
+    ]);
+
+    const labels: Record<string, string> = {};
+
+    // referrer_domain
+    const ref = document.referrer;
+    if (ref) {
+      try {
+        const url = new URL(ref);
+        const host = normalize(url.hostname, 64);
+        if (host) {
+          // Treat self-referrals as direct-ish to keep signal clean.
+          const selfHost = normalize(window.location.hostname, 64);
+          labels.referrer_domain = selfHost && host === selfHost ? "direct" : host;
+        }
+      } catch {
+        // ignore invalid referrer
+      }
+    }
+    if (!labels.referrer_domain) {
+      labels.referrer_domain = "direct";
+    }
+
+    // UTMs (strict allowlist)
+    const params = new URLSearchParams(window.location.search);
+    const utm_source = normalize(params.get("utm_source") || "", 32);
+    const utm_medium = normalize(params.get("utm_medium") || "", 32);
+    const utm_campaign = normalize(params.get("utm_campaign") || "", 32);
+
+    if (utm_source && allow.has(utm_source)) labels.utm_source = utm_source;
+    if (utm_medium && allow.has(utm_medium)) labels.utm_medium = utm_medium;
+    if (utm_campaign && allow.has(utm_campaign))
+      labels.utm_campaign = utm_campaign;
+
+    return labels;
+  }
+
+  /**
    * Load configuration from environment variables
    */
   private loadConfigFromEnv(): void {
@@ -196,6 +279,7 @@ class MetricsService {
       labels: {
         site: this.config.siteName,
         page,
+        ...this.getAttributionLabels(),
         ...(locale && { locale })
       },
       timestamp: Date.now()
@@ -222,6 +306,7 @@ class MetricsService {
         site: this.config.siteName,
         slug,
         content_type: type,
+        ...this.getAttributionLabels(),
         ...(locale && { locale })
       },
       timestamp: Date.now()
