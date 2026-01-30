@@ -93,6 +93,25 @@ NEXT_PUBLIC_METRICS_ENABLED=false
 
 Serve the contents of `out/` as static files (any static host works: nginx, Caddy, S3/CloudFront, Cloudflare Pages, GitHub Pages, etc.).
 
+### Recommended: build elsewhere, upload `out/`
+
+Because this project is a static export, **you don't need Node.js on the VPS at runtime**. The simplest and most reliable deployment is:
+
+- Build on your laptop / CI: `npm ci && npm run build`
+- Upload only the generated `out/` directory to your web root (e.g. with `rsync`)
+
+This avoids Next.js builds on small VPS instances entirely.
+
+### If you must build on a small VPS
+
+Next.js can be heavy on CPU/RAM. This repo supports an opt-in "lightweight build" mode that skips Next's built-in lint + typecheck step during `next build`:
+
+```bash
+NEXT_LIGHTWEIGHT_BUILD=true npm run build
+```
+
+Run `npm run lint` / `npm run typecheck` separately in CI to keep quality gates.
+
 Static export notes:
 
 - `next/image` optimization is disabled (`images.unoptimized = true`) to support pure static hosting.
