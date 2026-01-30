@@ -24,7 +24,7 @@ export async function ContentDetailPage({
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_260px]">
       <ContentArticle item={item} />
-      <TableOfContents toc={item.toc} />
+      <TableOfContents toc={item.toc} locale={locale} />
     </div>
   );
 }

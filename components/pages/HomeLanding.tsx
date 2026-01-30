@@ -57,7 +57,7 @@ export async function HomeLanding({ locale }: { locale: Locale }) {
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={latest.coverImage}
-                alt={`${latest.title} cover`}
+                alt={t(locale, "coverImageAlt", { title: latest.title })}
                 className="mb-6 aspect-[16/9] w-full rounded-lg object-cover"
               />
             ) : null}
@@ -87,9 +87,7 @@ export async function HomeLanding({ locale }: { locale: Locale }) {
             ) : null}
           </article>
         ) : (
-          <p className="text-muted-foreground">
-            {locale === "hu" ? "Még nincs magyar tartalom." : "No content yet."}
-          </p>
+          <p className="text-muted-foreground">{t(locale, "homeNoContentYet")}</p>
         )}
       </section>
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T14:01:43.081Z",
+  "generatedAt": "2026-01-30T08:18:41.707Z",
   "items": [
     {
       "type": "posts",
@@ -16,6 +16,7 @@
       "publishedAt": "2026-01-28T10:00:00.000Z",
       "updatedAt": "2026-01-28T10:00:00.000Z",
       "canonicalUrl": "https://blog.entazis.dev/en/posts/from-pomodoro-to-flowmodoro",
+      "coverImage": "/en/posts/from-pomodoro-to-momentum.png",
       "url": "/en/posts/from-pomodoro-to-flowmodoro",
       "draft": false
     }

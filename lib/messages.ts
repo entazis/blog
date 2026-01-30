@@ -4,6 +4,13 @@ const messages = {
   en: {
     skipToContent: "Skip to content",
 
+    tocAriaLabel: "Table of contents",
+    tocOnThisPage: "On this page",
+    themeToggleLabel: "Toggle theme",
+    footerAriaGitHub: "GitHub",
+    footerAriaLinkedIn: "LinkedIn",
+    footerAriaRss: "RSS",
+
     siteDescription:
       "I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.",
     siteTagline: "Sharing knowledge, one post at a time.",
@@ -21,6 +28,8 @@ const messages = {
     homeLatestPost: "Latest post",
     homeRecentPosts: "Recent posts",
     viewAll: "View all →",
+    homeNoContentYet: "No content yet.",
+    coverImageAlt: "{title} cover",
     homeUpdatesTitle: "Updates, soon",
     homeUpdatesBody:
       "Still building this. Add your email if you'd like a note when it's ready.",
@@ -52,9 +61,18 @@ const messages = {
     searchResultsLabel: "Results ({count})",
 
     footerRights: "© {year} {name}. All rights reserved.",
+
+    rootRedirecting: "Redirecting…",
   },
   hu: {
     skipToContent: "Ugrás a tartalomhoz",
+
+    tocAriaLabel: "Tartalomjegyzék",
+    tocOnThisPage: "Ezen az oldalon",
+    themeToggleLabel: "Téma váltása",
+    footerAriaGitHub: "GitHub",
+    footerAriaLinkedIn: "LinkedIn",
+    footerAriaRss: "RSS",
 
     siteDescription:
       "Szoftvermérnökségről, elosztott rendszerekről és fejlesztői eszközökről írok. Közben megosztom, amit tanulok.",
@@ -73,6 +91,8 @@ const messages = {
     homeLatestPost: "Legfrissebb bejegyzés",
     homeRecentPosts: "Friss bejegyzések",
     viewAll: "Összes →",
+    homeNoContentYet: "Még nincs magyar tartalom.",
+    coverImageAlt: "{title} borító",
     homeUpdatesTitle: "Hamarosan",
     homeUpdatesBody:
       "Még épül. Add meg az emailed, ha szeretnél értesítést, amikor kész.",
@@ -107,6 +127,8 @@ const messages = {
     searchResultsLabel: "Találatok ({count})",
 
     footerRights: "© {year} {name}. Minden jog fenntartva.",
+
+    rootRedirecting: "Átirányítás…",
   },
 } as const;
 

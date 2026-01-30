@@ -37,7 +37,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             {t(locale, "navSearch")}
           </Link>
           <LanguageSwitcher />
-          <ThemeToggle />
+          <ThemeToggle locale={locale} />
         </nav>
       </div>
     </header>

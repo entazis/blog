@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 
+import type { Locale } from "@/lib/i18n";
+import { t } from "@/lib/messages";
+
 function getInitialTheme(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
   const stored = window.localStorage.getItem("theme");
@@ -10,7 +13,7 @@ function getInitialTheme(): "light" | "dark" {
   return prefersDark ? "dark" : "light";
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ locale }: { locale: Locale }) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -30,10 +33,10 @@ export function ThemeToggle() {
     <button
       type="button"
       className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-foreground shadow-sm transition hover:border-primary/60"
-      aria-label="Toggle theme"
+      aria-label={t(locale, "themeToggleLabel")}
       onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
     >
-      <span className="sr-only">Toggle theme</span>
+      <span className="sr-only">{t(locale, "themeToggleLabel")}</span>
       {isDark ? (
         <svg
           aria-hidden="true"

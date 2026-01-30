@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
+import { t } from "@/lib/messages";
 
 function readCookie(name: string): string | null {
   if (typeof document === "undefined") return null;
@@ -21,20 +22,23 @@ function detectBrowserLocale(): Locale {
 
 export default function RootPage() {
   const router = useRouter();
+  const [targetLocale, setTargetLocale] = useState<Locale>(defaultLocale);
 
   useEffect(() => {
     const cookieLocale = readCookie("locale");
     const target = isLocale(cookieLocale ?? "") ? (cookieLocale as Locale) : detectBrowserLocale();
+    setTargetLocale(target);
     router.replace(`/${target}`);
   }, [router]);
 
   return (
     <main className="container py-10">
-      <p className="text-muted-foreground">Redirecting…</p>
+      <p className="text-muted-foreground">{t(targetLocale, "rootRedirecting")}</p>
       <noscript>
         <p>
           JavaScript is disabled. Continue to <Link href="/en">English</Link> or{" "}
-          <Link href="/hu">Magyar</Link>.
+          <Link href="/hu">Magyar</Link>. / A JavaScript le van tiltva. Folytatás:{" "}
+          <Link href="/en">English</Link> vagy <Link href="/hu">Magyar</Link>.
         </p>
       </noscript>
     </main>

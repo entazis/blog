@@ -26,7 +26,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <a
               className="focus-ring rounded-md p-1 transition hover:text-foreground"
               href={siteConfig.social.github}
-              aria-label="GitHub"
+              aria-label={t(locale, "footerAriaGitHub")}
               rel="noreferrer"
               target="_blank"
             >
@@ -37,7 +37,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <a
               className="focus-ring rounded-md p-1 transition hover:text-foreground"
               href={siteConfig.social.linkedin}
-              aria-label="LinkedIn"
+              aria-label={t(locale, "footerAriaLinkedIn")}
               rel="noreferrer"
               target="_blank"
             >
@@ -48,7 +48,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <Link
               className="focus-ring rounded-md p-1 transition hover:text-foreground"
               href={rssHref}
-              aria-label="RSS"
+              aria-label={t(locale, "footerAriaRss")}
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
                 <path d="M6.2 17.8a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4zM3 3.2v3.2c8.9 0 16 7.2 16 16H22C22 12 12.9 3.2 3 3.2zm0 6.4v3.2c5.4 0 9.6 4.4 9.6 9.6h3.2c0-7.1-5.7-12.8-12.8-12.8z" />
