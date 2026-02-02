@@ -5,8 +5,20 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 30 Jan 2026 09:30:01 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 16:54:02 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flow in the Age of AI Coding</title>
+      <link>https://blog.entazis.dev/en/posts/flow-in-the-age-of-ai-coding</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/flow-in-the-age-of-ai-coding</guid>
+      <pubDate>Mon, 02 Feb 2026 10:00:00 GMT</pubDate>
+      <category>ai</category>
+      <category>flow</category>
+      <category>productivity</category>
+      <category>software-development</category>
+      <category>coding</category>
+      <description><![CDATA[AI can change how we work, but flow comes from engagement and ownership, not from typing code.]]></description>
+    </item>
     <item>
       <title>Flowmodoro: From Pomodoro to Momentum</title>
       <link>https://blog.entazis.dev/en/posts/from-pomodoro-to-flowmodoro</link>

@@ -6,11 +6,15 @@
   <url><loc>https://blog.entazis.dev/en/reviews</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags</loc></url>
   <url><loc>https://blog.entazis.dev/en/rss.xml</loc></url>
+  <url><loc>https://blog.entazis.dev/en/posts/flow-in-the-age-of-ai-coding</loc><lastmod>2026-02-02T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/en/posts/from-pomodoro-to-flowmodoro</loc><lastmod>2026-01-28T10:00:00.000Z</lastmod></url>
+  <url><loc>https://blog.entazis.dev/en/tags/ai</loc></url>
+  <url><loc>https://blog.entazis.dev/en/tags/coding</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/flow</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/focus</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/pomodoro</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/productivity</loc></url>
+  <url><loc>https://blog.entazis.dev/en/tags/software-development</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/time-management</loc></url>
   <url><loc>https://blog.entazis.dev/hu</loc></url>
   <url><loc>https://blog.entazis.dev/hu/posts</loc></url>
@@ -18,9 +22,14 @@
   <url><loc>https://blog.entazis.dev/hu/reviews</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags</loc></url>
   <url><loc>https://blog.entazis.dev/hu/rss.xml</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/posts/flow-in-the-age-of-ai-coding</loc><lastmod>2026-02-02T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/hu/posts/from-pomodoro-to-flowmodoro</loc><lastmod>2026-01-28T10:00:00.000Z</lastmod></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/ai</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/flow</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/fokusz</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/idomenedzsment</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/pomodoro</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/produktivitas</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/programozas</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/szoftverfejlesztes</loc></url>
 </urlset>
