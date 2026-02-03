@@ -1,11 +1,31 @@
 import Link from "next/link";
 
+import { siteConfig } from "@/lib/site";
+
 function ExternalLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const href = props.href ?? "";
   const isExternal =
     href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//");
   if (!isExternal) return <a {...props} />;
   return <a {...props} target="_blank" rel="noreferrer noopener" />;
+}
+
+type SiteLinkProps = Omit<React.ComponentProps<typeof Link>, "href"> & {
+  href: string;
+};
+
+function SiteLink({ href, className, ...props }: SiteLinkProps) {
+  const absoluteHref = href.startsWith("/")
+    ? new URL(href, siteConfig.siteUrl).toString()
+    : href;
+
+  return (
+    <Link
+      {...props}
+      href={absoluteHref}
+      className={["text-link hover:text-link-hover", className].filter(Boolean).join(" ")}
+    />
+  );
 }
 
 function MdxImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
@@ -50,6 +70,7 @@ export const mdxComponents = {
       />
     );
   },
-  img: MdxImage
+  img: MdxImage,
+  SiteLink
 };
 
