@@ -10,7 +10,8 @@
     "format": "prettier -w .",
     "prebuild": "tsx scripts/generate-robots.ts && tsx scripts/build-search-index.ts && tsx scripts/generate-sitemap.ts && tsx scripts/generate-rss.ts",
     "build": "next build",
-    "deploy": "npm ci --no-audit --no-fund && NEXT_LIGHTWEIGHT_BUILD=true npm run build --ignore-scripts"
+    "build:light": "NEXT_LIGHTWEIGHT_BUILD=true npm run build --ignore-scripts",
+    "deploy": "npm ci --no-audit --no-fund && npm run build:lightweight"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
