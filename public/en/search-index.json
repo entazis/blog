@@ -1,6 +1,26 @@
 {
-  "generatedAt": "2026-02-03T07:28:55.079Z",
+  "generatedAt": "2026-02-10T07:13:56.408Z",
   "items": [
+    {
+      "type": "posts",
+      "slug": "openclaw-telegram-to-deployment",
+      "title": "From Telegram to Deployment with OpenClaw",
+      "excerpt": "A Telegram message turned into a live app on my domain. No IDE, no repo checkout, no manual deploy.",
+      "tags": [
+        "ai",
+        "agents",
+        "automation",
+        "productivity",
+        "vibe-coding",
+        "software-development"
+      ],
+      "publishedAt": "2026-02-09T10:00:00.000Z",
+      "updatedAt": "2026-02-09T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/openclaw-telegram-to-deployment",
+      "coverImage": "/en/posts/openclaw-telegram-to-deployment.png",
+      "url": "/en/posts/openclaw-telegram-to-deployment",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "flow-in-the-age-of-ai-coding",

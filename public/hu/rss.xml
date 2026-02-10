@@ -5,8 +5,21 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>hu</language>
-    <lastBuildDate>Tue, 03 Feb 2026 07:28:55 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 10 Feb 2026 07:13:57 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/hu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Telegramtól deploymentig OpenClaw-val</title>
+      <link>https://blog.entazis.dev/hu/posts/openclaw-telegram-to-deployment</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/hu/posts/openclaw-telegram-to-deployment</guid>
+      <pubDate>Mon, 09 Feb 2026 10:00:00 GMT</pubDate>
+      <category>ai</category>
+      <category>agentek</category>
+      <category>automatizalas</category>
+      <category>produktivitas</category>
+      <category>vibe-coding</category>
+      <category>szoftverfejlesztes</category>
+      <description><![CDATA[Egy Telegram üzenetből élő app lett a domainemen. Nincs IDE, nincs repo checkout, nincs kézi deploy.]]></description>
+    </item>
     <item>
       <title>Flow az AI-kódolás korában</title>
       <link>https://blog.entazis.dev/hu/posts/flow-in-the-age-of-ai-coding</link>

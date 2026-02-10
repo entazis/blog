@@ -1,0 +1,85 @@
+---
+slug: openclaw-telegram-to-deployment
+locale: hu
+title: "Telegramtól deploymentig OpenClaw-val"
+excerpt: "Egy Telegram üzenetből élő app lett a domainemen. Nincs IDE, nincs repo checkout, nincs kézi deploy."
+tags: [ai, agentek, automatizalas, produktivitas, vibe-coding, szoftverfejlesztes]
+coverImage: /en/posts/openclaw-telegram-to-deployment.png
+publishedAt: 2026-02-09T10:00:00.000Z
+updatedAt: 2026-02-09T10:00:00.000Z
+canonicalUrl: https://blog.entazis.dev/hu/posts/openclaw-telegram-to-deployment
+---
+
+**TL;DR**
+
+> - Összekötöttem az OpenClaw-t a Telegrammal, és megkértem, hogy építsen + deployoljon egy kis appot a domainemre.
+> - End-to-end működött, szinte “klasszikus” workflow nélkül.
+> - A lényeg nem csak a sebesség, hanem az, hogy összeomlik a távolság egy ötlet és egy használható dolog között.
+
+Eredetileg néhány bejegyzést akartam írni a vibe-coding projektekről. Kis kísérletek, apró tanulságok, kisebb sikerek. Ez volt a terv.
+
+Aztán jött az OpenClaw, és teljesen felborította ezt a tervet.
+
+Ez nem egy apró fejlesztés volt, és nem is egy kényelmesebb workflow. Inkább olyan érzés, mintha átugrottam volna egy evolúciós lépcsőt.
+
+## A Telegram mint deployment interfész
+
+Felraktam az OpenClaw-t a VPS-emre, összekötöttem a Telegrammal, főleg kíváncsiságból. Aztán megkértem, hogy építsen valami vicceset, és telepítse a saját domainemre.
+
+Megcsinálta.
+
+Nem volt IDE. Nem volt branch. Nem néztem diffeket. A kódra rá sem néztem.
+
+Pár pillanattal később már élt az új app.
+
+Ez volt az a rész, ami igazán összezavarta az agyam.
+
+Korábban a „gyors” flow-m így nézett ki: Cursor, plan mode, átnézem, amit generált, klónozom a repót a szerverre, nginx állítgatás, deploy. Később ezt még csiszoltam Cursor + Remote SSH kombinációval és közvetlen nginx menedzseléssel. Már ez is elég jól működött.
+
+De ez?
+
+Ez az volt, hogy írtam egy Telegram üzenetet egy botnak, és lett egy új, csillogó kis eszközöm a domainemen. Ez már nem workflow, ez varázslat.
+
+Azóta veszélyes gondolataim vannak. Komolyan eljátszottam az ötlettel, hogy beállítok egy cron jobot reggel 6-ra. Felkelek, elkezdem a reggeli rutinomat, és valahol a háttérben egy AI-ügynök appot épít és deployol. Mire megiszom a kávémat, létezik valami, ami előtte még nem.
+
+Ezek az appok többnyire sima vanilla HTML, CSS és JavaScript. Nincsenek frameworkök. Nincsenek könyvtárak.
+
+És ez felvet egy kellemetlen kérdést: miért lenne szükség frameworkre egyszerű webes appokhoz, ha egy AI képes az egészet legenerálni, struktúrálni és deployolni a lehető leghatékonyabb módon?
+
+A frameworkök embereknek készülnek. Olvashatóság. Bővíthetőség. Hosszú távú karbantartás. Csapatok.
+
+De ha az egyszerű kliensoldali appokat dinamikus AI rendszerek kezelik, akkor eltolódik a hangsúly. Ami igazán számít, az az API-k. Az eszközök. A stabil interfészek, amelyekre ezek az ügynökök támaszkodhatnak.
+
+## Amikor összeállt
+
+Aztán jött a kedvenc pillanatom.
+
+Reggeliztünk, közben egy kertészkedős filmet néztünk, és a menyasszonyom megjegyezte, milyen jó lenne egy app, ami megmondja, milyen növényeket érdemes ültetni bizonyos környezeti adottságok mellett.
+
+Átküldtem az ötletet a Telegramos AI-ügynökömnek.
+
+Körülbelül tíz perccel később kaptam egy e-mailt az app URL-jével és a repository linkjével.
+
+Ez egy nagyon egyszerű app. Semmi extra. De láthatóan örömet okozott neki. Tudott szűrni, tervezni, hogy milyen növények férnének bele, amikor majd egyszer lesz kertünk.
+
+Ekkor állt össze bennem a kép.
+
+Ez nem a „komoly” szoftverfejlesztés kiváltásáról szól. Hanem arról, hogy összeomlik a távolság egy ötlet és egy már használható dolog között.
+
+Az OpenClaw nem csak felgyorsított. Megváltoztatta azt is, hogy mi tűnik egyáltalán érdemesnek megépíteni.
+
+## Amit érdemes kimondani
+
+Persze vannak egyértelmű megkötések, és érdemes ezekről őszintén beszélni.
+
+A biztonság gyakran felmerül az OpenClaw kapcsán, és teljesen jogosan. Az én jelenlegi setupom tudatosan sandbox. Csak hobbi projektek futnak rajta, a saját VPS-emen, értékes adatok nélkül. Ha jogosultságot kér, átgondolom, tudatosan megadom, és elfogadom a kockázatot. Egyelőre ezzel a kompromisszummal együtt tudok élni.
+
+Ez a környezet nem lenne elég nagyobb projektek összetákolására sem. Kevés a tárhely, az AI kontextusablaka is véges. Ha feszegeted, érezni lehet ezeket a határokat.
+
+De ez nem elrettentő, inkább lehetőségeket kínál.
+
+Kíváncsi vagyok, meddig lehet eljutni, ha inkrementálisan építkezünk vele. Először kis appok, aztán egyre összetettebbek. Minden nap egy kicsit ambiciózusabb, mint az előző.
+
+A veszélyes gondolat újra és újra visszatér: egy napi OpenClaw cron reggel 6-kor. Velem együtt „ébred”, húz egy random ötletet, és épít rá valamit. Mindig egy kicsit bonyolultabbat, mint az előző nap. Mire végzek a reggeli rutinommal, megszületik valami. Lehet hasznos, lehet teljesen értelmetlen, de valódi.
+
+Ez egy teljesen új kreatív ritmusnak érződik.

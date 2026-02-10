@@ -5,8 +5,21 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Feb 2026 07:28:55 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 10 Feb 2026 07:13:57 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Telegram to Deployment with OpenClaw</title>
+      <link>https://blog.entazis.dev/en/posts/openclaw-telegram-to-deployment</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/openclaw-telegram-to-deployment</guid>
+      <pubDate>Mon, 09 Feb 2026 10:00:00 GMT</pubDate>
+      <category>ai</category>
+      <category>agents</category>
+      <category>automation</category>
+      <category>productivity</category>
+      <category>vibe-coding</category>
+      <category>software-development</category>
+      <description><![CDATA[A Telegram message turned into a live app on my domain. No IDE, no repo checkout, no manual deploy.]]></description>
+    </item>
     <item>
       <title>Flow in the Age of AI Coding</title>
       <link>https://blog.entazis.dev/en/posts/flow-in-the-age-of-ai-coding</link>
