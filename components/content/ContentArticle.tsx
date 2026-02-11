@@ -32,6 +32,8 @@ export async function ContentArticle({ item }: { item: ContentItem }) {
           <img
             src={item.coverImage}
             alt={`${item.title} cover`}
+            loading="lazy"
+            decoding="async"
             className="mt-4 w-full rounded-2xl border border-border bg-card object-cover shadow-lg"
           />
         ) : null}

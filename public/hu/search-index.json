@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T07:13:56.408Z",
+  "generatedAt": "2026-02-11T09:40:22.528Z",
   "items": [
     {
       "type": "posts",
@@ -17,7 +17,7 @@
       "publishedAt": "2026-02-09T10:00:00.000Z",
       "updatedAt": "2026-02-09T10:00:00.000Z",
       "canonicalUrl": "https://blog.entazis.dev/hu/posts/openclaw-telegram-to-deployment",
-      "coverImage": "/en/posts/openclaw-telegram-to-deployment.png",
+      "coverImage": "/en/posts/openclaw-telegram-to-deployment.webp",
       "url": "/hu/posts/openclaw-telegram-to-deployment",
       "draft": false
     },
@@ -36,7 +36,7 @@
       "publishedAt": "2026-02-02T10:00:00.000Z",
       "updatedAt": "2026-02-02T10:00:00.000Z",
       "canonicalUrl": "https://blog.entazis.dev/hu/posts/flow-in-the-age-of-ai-coding",
-      "coverImage": "/en/posts/flow-in-the-age-of-ai-coding.png",
+      "coverImage": "/en/posts/flow-in-the-age-of-ai-coding.webp",
       "url": "/hu/posts/flow-in-the-age-of-ai-coding",
       "draft": false
     },
@@ -54,7 +54,7 @@
       "publishedAt": "2026-01-28T10:00:00.000Z",
       "updatedAt": "2026-01-28T10:00:00.000Z",
       "canonicalUrl": "https://blog.entazis.dev/hu/posts/from-pomodoro-to-flowmodoro",
-      "coverImage": "/en/posts/from-pomodoro-to-momentum.png",
+      "coverImage": "/en/posts/from-pomodoro-to-momentum.webp",
       "url": "/hu/posts/from-pomodoro-to-flowmodoro",
       "draft": false
     }
