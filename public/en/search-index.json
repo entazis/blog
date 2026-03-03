@@ -1,6 +1,23 @@
 {
-  "generatedAt": "2026-02-11T09:40:22.528Z",
+  "generatedAt": "2026-03-03T15:34:34.616Z",
   "items": [
+    {
+      "type": "notes",
+      "slug": "coding-feels-managerial-now",
+      "title": "Coding feels managerial now",
+      "excerpt": "My maker's schedule has fragmented into a manager's schedule. The work isn't typing anymore—it's judgment.",
+      "tags": [
+        "ai",
+        "agents",
+        "productivity",
+        "software-development",
+        "workflow"
+      ],
+      "publishedAt": "2026-03-03T15:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/notes/coding-feels-managerial-now",
+      "url": "/en/notes/coding-feels-managerial-now",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "openclaw-telegram-to-deployment",

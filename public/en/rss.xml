@@ -5,8 +5,20 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Feb 2026 09:40:32 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 15:34:44 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coding feels managerial now</title>
+      <link>https://blog.entazis.dev/en/notes/coding-feels-managerial-now</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/en/notes/coding-feels-managerial-now</guid>
+      <pubDate>Tue, 03 Mar 2026 15:00:00 GMT</pubDate>
+      <category>ai</category>
+      <category>agents</category>
+      <category>productivity</category>
+      <category>software-development</category>
+      <category>workflow</category>
+      <description><![CDATA[My maker's schedule has fragmented into a manager's schedule. The work isn't typing anymore—it's judgment.]]></description>
+    </item>
     <item>
       <title>From Telegram to Deployment with OpenClaw</title>
       <link>https://blog.entazis.dev/en/posts/openclaw-telegram-to-deployment</link>
