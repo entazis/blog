@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2026-03-03T15:48:52.931Z",
+  "generatedAt": "2026-03-12T15:52:46.412Z",
   "items": [
+    {
+      "type": "notes",
+      "slug": "coding-more-not-less",
+      "title": "Coding more, not less",
+      "excerpt": "AI agents didn't reduce my coding time. They made coding feel possible everywhere—and now I can't stop.",
+      "tags": [
+        "ai",
+        "agents",
+        "productivity",
+        "software-development",
+        "workflow"
+      ],
+      "publishedAt": "2026-03-12T15:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/notes/coding-more-not-less",
+      "coverImage": "/en/notes/coding-more-not-less.webp",
+      "url": "/en/notes/coding-more-not-less",
+      "draft": false
+    },
     {
       "type": "notes",
       "slug": "coding-feels-managerial-now",
