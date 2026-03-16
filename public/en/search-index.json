@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2026-03-12T15:52:46.412Z",
+  "generatedAt": "2026-03-16T16:07:30.827Z",
   "items": [
+    {
+      "type": "posts",
+      "slug": "ai-ships-new-app-every-morning",
+      "title": "My AI Ships a New App Every Morning",
+      "excerpt": "A cron job triggers my AI assistant at 06:00. By the time I finish coffee, a brand new tool is live on my domain.",
+      "tags": [
+        "ai",
+        "agents",
+        "automation",
+        "software-development",
+        "vibe-coding"
+      ],
+      "publishedAt": "2026-03-16T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/ai-ships-new-app-every-morning",
+      "coverImage": "/en/posts/ai-ships-new-app-every-morning.webp",
+      "url": "/en/posts/ai-ships-new-app-every-morning",
+      "draft": false
+    },
     {
       "type": "notes",
       "slug": "coding-more-not-less",
