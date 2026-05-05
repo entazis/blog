@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2026-03-16T16:07:30.827Z",
+  "generatedAt": "2026-05-05T16:19:08.342Z",
   "items": [
+    {
+      "type": "posts",
+      "slug": "learning-at-ai-speed",
+      "title": "Learning at AI Speed (and the Cost of Not Keeping Up)",
+      "excerpt": "Output from agents can race ahead of understanding—and that gap is comprehension debt. Two working modes explain why, and why the bottleneck may no longer be how fast you build.",
+      "tags": [
+        "ai",
+        "agents",
+        "learning",
+        "software-development",
+        "productivity"
+      ],
+      "publishedAt": "2026-05-05T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/learning-at-ai-speed",
+      "coverImage": "/en/posts/learning-at-ai-speed.webp",
+      "url": "/en/posts/learning-at-ai-speed",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "ai-ships-new-app-every-morning",
