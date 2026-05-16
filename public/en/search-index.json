@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-05-16T11:04:48.757Z",
+  "generatedAt": "2026-05-16T11:18:00.769Z",
   "items": [
     {
       "type": "posts",
       "slug": "hobby-projects-i-ship-with-ai",
       "title": "Hobby projects I actually ship with AI",
-      "excerpt": "A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a personal site and timer to a snake game and an old rap-bot dream.",
+      "excerpt": "A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a wedding site and this blog to a timer, a Snake game, and an old rap-bot dream.",
       "tags": [
         "ai",
         "vibe-coding",

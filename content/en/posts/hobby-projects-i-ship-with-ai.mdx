@@ -2,7 +2,7 @@
 slug: hobby-projects-i-ship-with-ai
 locale: en
 title: "Hobby projects I actually ship with AI"
-excerpt: "A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a personal site and timer to a snake game and an old rap-bot dream."
+excerpt: "A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a wedding site and this blog to a timer, a snake game, and an old rap-bot dream."
 tags: [ai, vibe-coding, software-development, side-projects, productivity]
 coverImage: /en/posts/hobby-projects-i-ship-with-ai.webp
 publishedAt: 2026-05-14T10:00:00.000Z
@@ -28,6 +28,8 @@ My site, [entazis.dev](https://entazis.dev), is a good example of the churn. The
 Later I flipped the order: spec first. I committed an overview, stack choice, features, implementation notes, even agent rules, and refined that text with [Claude](https://claude.ai), [ChatGPT](https://chatgpt.com), and [Perplexity](https://www.perplexity.ai) before any serious code generation. Only after that did I let an agent build in steps.
 
 Then I tried [Lovable](https://lovable.dev) against the same spec. In a few minutes it produced a version that looked better than what I had been polishing by hand, so I merged that direction into my main branch and continued from there.
+
+The same loop covered a wedding site when the date was getting close, and this blog. For both I wrote the spec first, used Lovable where I wanted a strong layout, then moved into Cursor to make it real. The wedding site got an RSVP form backed by Google Sheets and enough polish for guests. I did not treat it like a long-term product. For the blog I cared more about stack: Lovable’s plans looked great but stay on React and Vite with client rendering, which is weaker for SEO. I wanted Next.js with static generation, so I kept Cursor’s implementation and borrowed Lovable’s visual direction.
 
 That loop repeats: think it through, write the spec, get a first version, then treat it like any other codebase. The model did not remove the work. It made the first chunk stupidly fast.
 
@@ -63,7 +65,7 @@ Lately, with current tools, I keep thinking about revisiting that project, maybe
 
 The more I use these tools, the less I think “vibe-coding” is really about code. It is about shrinking the distance between curiosity and something you can poke.
 
-What if I had my own timer? What if my personal site had real metrics? What if I made a small game? What if I retried that lyrics model?
+What if I had my own timer? What if my personal site had real metrics? What if I made a wedding website? What if I made a small game? What if I retried that lyrics model?
 
 Those questions used to stall in my head. Now they often become experiments. Some are useful, some are silly, some turn into daily tools, plenty stay half-finished, but far more of them leave the idea stage than before.
 
