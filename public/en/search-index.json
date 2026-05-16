@@ -1,11 +1,29 @@
 {
-  "generatedAt": "2026-05-05T16:19:08.342Z",
+  "generatedAt": "2026-05-16T11:04:48.757Z",
   "items": [
+    {
+      "type": "posts",
+      "slug": "hobby-projects-i-ship-with-ai",
+      "title": "Hobby projects I actually ship with AI",
+      "excerpt": "A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a personal site and timer to a snake game and an old rap-bot dream.",
+      "tags": [
+        "ai",
+        "vibe-coding",
+        "software-development",
+        "side-projects",
+        "productivity"
+      ],
+      "publishedAt": "2026-05-14T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/hobby-projects-i-ship-with-ai",
+      "coverImage": "/en/posts/hobby-projects-i-ship-with-ai.webp",
+      "url": "/en/posts/hobby-projects-i-ship-with-ai",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "learning-at-ai-speed",
       "title": "Learning at AI Speed (and the Cost of Not Keeping Up)",
-      "excerpt": "Output from agents can race ahead of understanding—and that gap is comprehension debt. Two working modes explain why, and why the bottleneck may no longer be how fast you build.",
+      "excerpt": "Output from agents can race ahead of understanding, and that gap is comprehension debt. Two working modes explain why, and why the bottleneck may no longer be how fast you build.",
       "tags": [
         "ai",
         "agents",

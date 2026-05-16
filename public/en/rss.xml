@@ -5,8 +5,20 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 05 May 2026 16:19:09 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 11:04:49 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hobby projects I actually ship with AI</title>
+      <link>https://blog.entazis.dev/en/posts/hobby-projects-i-ship-with-ai</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/hobby-projects-i-ship-with-ai</guid>
+      <pubDate>Thu, 14 May 2026 10:00:00 GMT</pubDate>
+      <category>ai</category>
+      <category>vibe-coding</category>
+      <category>software-development</category>
+      <category>side-projects</category>
+      <category>productivity</category>
+      <description><![CDATA[A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a personal site and timer to a snake game and an old rap-bot dream.]]></description>
+    </item>
     <item>
       <title>Learning at AI Speed (and the Cost of Not Keeping Up)</title>
       <link>https://blog.entazis.dev/en/posts/learning-at-ai-speed</link>
@@ -17,7 +29,7 @@
       <category>learning</category>
       <category>software-development</category>
       <category>productivity</category>
-      <description><![CDATA[Output from agents can race ahead of understanding—and that gap is comprehension debt. Two working modes explain why, and why the bottleneck may no longer be how fast you build.]]></description>
+      <description><![CDATA[Output from agents can race ahead of understanding, and that gap is comprehension debt. Two working modes explain why, and why the bottleneck may no longer be how fast you build.]]></description>
     </item>
     <item>
       <title>My AI Ships a New App Every Morning</title>
