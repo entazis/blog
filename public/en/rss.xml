@@ -5,19 +5,19 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 16 May 2026 11:18:01 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 14:29:50 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hobby projects I actually ship with AI</title>
-      <link>https://blog.entazis.dev/en/posts/hobby-projects-i-ship-with-ai</link>
-      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/hobby-projects-i-ship-with-ai</guid>
+      <title>When building started feeling light again</title>
+      <link>https://blog.entazis.dev/en/posts/when-building-started-feeling-light-again</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/when-building-started-feeling-light-again</guid>
       <pubDate>Thu, 14 May 2026 10:00:00 GMT</pubDate>
       <category>ai</category>
       <category>vibe-coding</category>
       <category>software-development</category>
       <category>side-projects</category>
       <category>productivity</category>
-      <description><![CDATA[A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a wedding site and this blog to a timer, a Snake game, and an old rap-bot dream.]]></description>
+      <description><![CDATA[A 7-day build log sounded fun until OpenClaw started shipping apps on its own. What stuck was simpler: AI makes it easy to turn hobby ideas into real things, from a wedding site and this blog to a timer, a snake game, and an old rap-bot dream.]]></description>
     </item>
     <item>
       <title>Learning at AI Speed (and the Cost of Not Keeping Up)</title>
