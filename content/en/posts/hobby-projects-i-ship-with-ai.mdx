@@ -11,11 +11,11 @@ canonicalUrl: https://blog.entazis.dev/en/posts/hobby-projects-i-ship-with-ai
 
 I had a tidy idea: run a 7-day vibe-coding challenge. Each day, one side project built with AI, with a short write-up on how it started, what stuck, what broke, and what I took away.
 
-While I was wiring up <SiteLink href="/en/posts/openclaw-telegram-to-deployment">OpenClaw</SiteLink> for an experiment, the setup started doing something louder than my plan. It was pushing a new app most mornings with very little “vibing” on my side, almost on autopilot. I wrote about the cron side of that in <SiteLink href="/en/posts/ai-ships-new-app-every-morning">another post</SiteLink>. By the time I got serious about drafting day one, the challenge framing felt redundant.
+While I was wiring up <SiteLink href="/en/posts/openclaw-telegram-to-deployment">OpenClaw</SiteLink> for an experiment, the setup started doing something much bigger than my plan. It was pushing a new app most mornings with very little “vibing” on my side, almost on autopilot. I wrote about the cron side of that in <SiteLink href="/en/posts/ai-ships-new-app-every-morning">another post</SiteLink>. By the time I got serious about drafting day one, the challenge framing felt redundant.
 
 The interesting part was not the streak. It was that over the last few months, AI tools had slipped into how I build almost everything without me treating it as a special mode.
 
-I still say “vibe-coding” sometimes because it is the word people reach for. If I am being precise, I call it AI-assisted work. There is still a human doing the thinking, saying no, debugging, ripping out half-baked output, and steering until something is actually useful. What changed is that the gap between “I have an idea” and “I have something running” got a lot smaller.
+I still say “vibe-coding” sometimes because it is the word people reach for. If I want to be precise, I call it AI-assisted work. There is still a human doing the thinking, saying no, debugging, ripping out half-baked output, and steering until something is actually useful. What changed is that the gap between “I have an idea” and “I have something running” got a lot smaller.
 
 ## Starting got cheap
 
@@ -29,9 +29,9 @@ Later I flipped the order: spec first. I committed an overview, stack choice, fe
 
 Then I tried [Lovable](https://lovable.dev) against the same spec. In a few minutes it produced a version that looked better than what I had been polishing by hand, so I merged that direction into my main branch and continued from there.
 
-The same loop covered a wedding site when the date was getting close, and this blog. For both I wrote the spec first, used Lovable where I wanted a strong layout, then moved into Cursor to make it real. The wedding site got an RSVP form backed by Google Sheets and enough polish for guests. I did not treat it like a long-term product. For the blog I cared more about stack: Lovable’s plans looked great but stay on React and Vite with client rendering, which is weaker for SEO. I wanted Next.js with static generation, so I kept Cursor’s implementation and borrowed Lovable’s visual direction.
+The same loop covered other projects too, including my wedding site and this blog. In both cases I started from a written spec, generated an initial version, then moved into Cursor to shape it into something I actually wanted to maintain.
 
-That loop repeats: think it through, write the spec, get a first version, then treat it like any other codebase. The model did not remove the work. It made the first chunk stupidly fast.
+That loop repeats: think it through, write the spec, get a first version, then treat it like any other codebase. The model did not remove the work. It just made getting started absurdly fast.
 
 ## Tools I actually open
 
@@ -45,7 +45,7 @@ This might be the biggest shift. AI speeds up building, but for me it speeds up 
 
 When I wanted basic observability, I started playing with Prometheus and Grafana without much prior setup experience. Instead of reading docs for hours in isolation, I asked an agent what to measure, what to change in the apps, what a sane layout looks like on a small personal server, and where the usual footguns are. Then I implemented alongside the answers and adjusted when reality disagreed.
 
-I end up in two different postures. Sometimes I already know the shape of the solution and I want velocity. I can judge output quickly and my job is to keep the train on the tracks. When I am learning something new, I slow down: I watch the steps, ask why, and treat the agent like a tutor that can also type. That second mode has probably taught me more in the last year than a pile of passive tutorials.
+I end up in two different postures. Sometimes I already know the shape of the solution and I want velocity. I can judge output quickly and my job is to keep the train on the tracks. When I am learning something new, I slow down: I watch the steps, ask why, and treat the agent like a tutor that can also type. That second mode probably taught me more in the last year than a pile of passive tutorials ever did.
 
 ## Not everything has to be useful
 
@@ -59,9 +59,15 @@ When I was a teenager I was deep into Hungarian hip-hop: lyrics, beats, recordin
 
 Around 2017 I wondered whether I could train a small network to write rap lyrics for me. I scraped Hungarian lyrics, uploaded a dataset to AWS, grabbed an open-source text generation repo, and let it train for a day or two. The output was nonsense with occasional almost-words. Tiny model, no real pretraining, weak hardware, small data, nothing like what you get from a modern general model. I was still excited, in a “this direction might go somewhere” way.
 
-Lately, with current tools, I keep thinking about revisiting that project, maybe with fine-tuning, maybe with long-context prompting, maybe just as a toy. It is still on the list. If someone told me they genuinely wanted to hear AI-generated Hungarian rap, it would jump a few slots.
+Lately, with current tools, I keep thinking about revisiting that project: mostly by fine-tuning a model on Hungarian lyrics. The odd part is that I am not sure I need to yet. Off-the-shelf models are already surprisingly decent at Hungarian lyrics. A few years ago I could not even explain what a rhyme is and get anything back that made sense. Now I can ask for a verse with internal rhymes and get something that is honestly not bad.
+
+Fine-tuning could probably push that further: tighter rhyme schemes, a more consistent voice, fewer strange word choices. It is on my list, although the copyright side of building a public lyrics dataset is still something I have not worked out.
+
+If someone told me they genuinely wanted to hear AI-generated Hungarian rap, the project would jump a few slots anyway.
 
 ## Less about code, more about curiosity
+
+Looking back, the projects themselves are not the interesting part. A timer, a game, a wedding site, a portfolio — none of them are groundbreaking. What changed is how little friction there is between having the idea and trying it for real.
 
 The more I use these tools, the less I think “vibe-coding” is really about code. It is about shrinking the distance between curiosity and something you can poke.
 
