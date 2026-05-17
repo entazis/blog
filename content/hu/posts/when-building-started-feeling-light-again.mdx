@@ -1,0 +1,93 @@
+---
+slug: when-building-started-feeling-light-again
+locale: hu
+title: "Amikor újra könnyűnek érződött építeni"
+excerpt: "Jó ötletnek tűnt egy 7 napos vibe-coding kihívás, amíg az OpenClaw el nem kezdett magától appokat gyártani. Ami végül megmaradt: az AI-val sokkal könnyebb valódi projektekké alakítani a hobbiból jött ötleteket, legyen az esküvői weboldal, ez a blog, egy timer, egy snake játék vagy egy régi rap-bot álom."
+tags: [ai, vibe-coding, szoftverfejlesztes, hobbi-projektek, produktivitas]
+coverImage: /en/posts/when-building-started-feeling-light-again.webp
+publishedAt: 2026-05-14T10:00:00.000Z
+canonicalUrl: https://blog.entazis.dev/hu/posts/when-building-started-feeling-light-again
+---
+
+Jó kis ötletem volt: csinálok egy 7 napos vibe-coding kihívást. Minden nap egy AI-al épített side project, rövid leírással arról, hogyan indult, mi maradt meg belőle, mi ment félre, és mit tanultam közben.
+
+Aztán miközben egy kísérlethez összeraktam az <SiteLink href="/en/posts/openclaw-telegram-to-deployment">OpenClaw-t</SiteLink>, a setup elkezdett valami sokkal nagyobbat csinálni annál, mint amit terveztem. Reggelenként új appokat generált, szinte teljesen magától, nagyon kevés “vibinggal” az én oldalamról. Ennek a cronos részéről írtam <SiteLink href="/hu/posts/ai-ships-new-app-every-morning">egy másik posztban</SiteLink>. Mire komolyan nekiálltam volna az első nap megírásának, maga a kihívásötlet már feleslegesnek tűnt.
+
+Nem a 7 nap volt az érdekes. Hanem az, hogy az elmúlt hónapokban az AI-eszközök szinte észrevétlenül beépültek abba, ahogy szinte mindent építek, anélkül hogy ezt külön “üzemmódnak” tekintettem volna.
+
+Néha én is azt mondom rá, hogy “vibe-coding”, mert most ezt a szót használja mindenki. Ha pontos akarok lenni, inkább AI-assisted worknek hívom. Mert továbbra is ott van az ember: gondolkodik, nemet mond, debugol, kidobja a félresikerült részeket, és addig terelgeti a dolgot, amíg tényleg használható nem lesz. Ami változott, az az, hogy sokkal kisebb lett a távolság aközött, hogy „van egy ötletem”, és aközött, hogy „fut valami”.
+
+## Könnyebb elkezdeni
+
+Régebben rengeteg kisebb ötletem ott tolongott a jegyzeteim között. Nem azért, mert ne lehetett volna megvalósítani őket. Hanem mert az indulás egy egész hétvégét jelentett: technológia kiválasztása, repo scaffolding, layout, alap UI összedrótozása, és csak utána lehetett eljutni az érdekes részig.
+
+Most sok ilyen ötletből egy este alatt működő prototípus lesz.
+
+A saját oldalam, [entazis.dev](https://entazis.dev), jó példa erre az iterálásra. Az első verzió [Bolt.new](https://bolt.new)-val indult. A promptban sok animációt és látványos UI-t kértem, úgyhogy a generátor kicsit túllőtt a célon, ami végül teljesen érthető volt. Utána [Cursor](https://cursor.com)-ban folytattam.
+
+Később megfordítottam a sorrendet: előbb specifikáció. Commitoltam az áttekintést, a stack-választást, feature listát, implementációs jegyzeteket, még agent szabályokat is, és ezt a szöveget finomítottam [Claude](https://claude.ai), [ChatGPT](https://chatgpt.com) és [Perplexity](https://www.perplexity.ai) segítségével, mielőtt komolyabb kódgenerálás történt volna. Csak ezután engedtem rá az agentet.
+
+Aztán kipróbáltam ugyanerre a specifikációra a [Lovable](https://lovable.dev)-t is. Pár perc alatt egy olyan verziót generált, ami szebb lett annál, amit addig kézzel csiszolgattam, szóval azt az irányt emeltem be a fő branchbe, és onnan folytattam.
+
+Ugyanez a minta ismétlődött más projekteknél is, például az esküvői weboldalnál és ennél a blognál. Mindkettőnél írt specifikációval indultam, generáltam egy első verziót, aztán Cursorban formáltam olyanná, amit tényleg szívesen fenntartok.
+
+A kör ugyanaz: végiggondolni, leírni, generálni egy első verziót, majd ugyanúgy kezelni, mint bármelyik normál kódbázist. A modell nem vette el a munkát. Csak nevetségesen gyors lett elindulni.
+
+## Eszközök, amiket használok
+
+Konkrét példa a [Flowmodoro](https://flow.entazis.dev), ami igazából csak egy timer. Azért csináltam, mert egyik meglévő app sem illett ahhoz, ahogy dolgozni szeretek. Leírtam a követelményeket, generáltam egy első verziót Lovable-ben, aztán Cursorban finomítottam: hangok, témák, layout javítások, kisebb UX módosítások. A mögötte lévő technikát leírtam a <SiteLink href="/hu/posts/from-pomodoro-to-flowmodoro">Flowmodoro: Pomodorótól a lendületig</SiteLink> posztban.
+
+Naponta használom a saját hobbiprojektjeimen dolgozva. Van valami különösen jó érzés abban, amikor magadnak raksz össze egy eszközt, és apránként mindig alakítasz rajta, ha valami zavar.
+
+## Tanulás építés közben
+
+Talán ez a legnagyobb változás.
+
+Az AI gyorsítja az építést, de nekem még inkább a tanulást gyorsítja.
+
+Amikor alap megfigyelhetőséget akartam, elkezdtem játszani Prometheus és Grafana használatával, szinte előzetes tapasztalat nélkül. Ahelyett, hogy órákig dokumentációt olvastam volna elszigetelten, megkérdeztem az agentet: mit érdemes mérni, mit kell módosítani az appokon, hogyan néz ki egy értelmes setup egy kis szerveren, és mik a tipikus buktatók. Aztán építettem közben, és ott korrigáltam, ahol a valóság mást mutatott.
+
+Kétféle módszerem alakult ki. 
+
+Néha már tudom, hogyan néz ki a megoldás, ilyenkor a sebesség számít. Gyorsan el tudom dönteni, jó-e az output, és az a dolgom, hogy a sínpályán tartsam a folyamatot.
+Ha valami újat tanulok, lelassítok. Figyelem a lépéseket, rákérdezek, mi miért történik, és úgy kezelem az agentet, mint egy tanárt, aki közben kódolni is tud. Ez a második mód valószínűleg többet tanított az elmúlt évben, mint egy rakás passzív tutorial együttvéve.
+
+## Nem mindennek kell hasznosnak lennie
+
+Csináltam egy egyszerű [Snake játékot](https://snake.entazis.dev/) is, csak mert kedvem volt hozzá. Cursorral és Lovable-lel is generáltam verziókat, kiválasztottam, amelyik jobban nézett ki, aztán javítottam a reszponzivitást, hozzáadtam swipe vezérlést mobilra, és játszottam browser automationnel.
+
+Egy ponton felraktam a Chrome DevTools MCP szervert, és rávettem a coding agentet, hogy nyissa meg a böngészőt, nézze meg a konzolhibákat, majd javítsa ki a saját hibáit. Kicsit furcsa volt, jó értelemben. Olyan, mintha beleláttam volna egy pár évvel későbbi workflowba.
+
+## Régi ötletek visszatérnek
+
+Van ebben egyszerűen játékosság is, de közben régi projekteket is visszahoz az asztalra.
+
+Tinédzserként nagyon benne voltam a magyar hip-hopban: dalszövegírás, beatkészítés, felvétel, az egész amatőr csomag. Aztán az egyetem kiszorította.
+
+2017 körül felmerült bennem, hogy mi lenne, ha egy kis neurális hálót tanítanék be arra, hogy helyettem írjon rapszövegeket. Leszedtem magyar dalszövegeket, feltöltöttem az adatokat AWS-re, kerestem egy open-source szöveggeneráló projektet, és hagytam futni egy-két napig.
+
+A végeredmény teljes zagyvaság volt, néha egy-egy szó már majdnem magyarnak tűnt.
+
+Kicsi modell, semmi pretraining, gyenge hardver, kevés adat, teljesen más világ, mint a mai modellek. Mégis izgatott voltam. Olyan érzés volt, hogy ez az irány egyszer még érdekes lehet.
+
+Mostanában egyre többet gondolok arra, hogy újra elővegyem ezt a projektet, leginkább valamilyen fine-tuninggal magyar dalszövegeken. Az érdekes az, hogy lehet, már nem is kell. A mostani modellek meglepően jók magyar dalszöveg-generálásban. Pár éve még azt sem tudtam velük megértetni, mi az a rím. Most már simán tudok kérni belső rímekkel versszakot, és néha egészen vállalható.
+
+A fine-tuning valószínűleg még javíthatna rajta: jobb rímszerkezet, egységesebb hang, kevesebb furcsa szóválasztás. Rajta van a listámon, de még nem jutottam oda. A szerzői jogi része sem teljesen tiszta számomra. Tinédzserként összeszedni dalszövegeket egy hülye kísérlethez egy dolog volt. Nyilvánosan iterálható tanítóadatot építeni belőlük már más kérdés.
+
+Ha valaki azt mondaná, hogy tényleg kíváncsi AI-generált magyar rapre, azért ez a projekt valószínűleg előrébb ugrana a listán.
+
+## Kevésbé a kódról szól, inkább a kíváncsiságról
+
+Visszanézve nem is maguk a projektek az érdekesek. Egy timer, egy játék, egy esküvői oldal, egy portfólió. Egyik sem világmegváltó. Ami változott, az az, hogy mennyire kicsi lett a távolság az ötlet és a kipróbálás között.
+
+Minél többet használom ezeket az eszközöket, annál kevésbé érzem úgy, hogy a vibe-coding a kódról szól. Inkább arról, hogy mennyire gyorsan tudsz a kíváncsiságból valami kézzelfoghatót csinálni.
+
+Mi lenne, ha lenne saját timerem? Mi lenne, ha lenne normális monitoring a személyes oldalamon? Mi lenne, ha csinálnék egy esküvői oldalt? Egy kis játékot? Mi lenne, ha újra elővenném azt a rapszöveg-generátort?
+
+Régen ezek a kérdések gyakran a fejemben maradtak. Most sokszor kísérletek lesznek belőlük. Némelyik hasznos, némelyik hülyeség, némelyik napi eszközzé válik, sok félkész marad, de jóval több jut el a megvalósításig, mint korábban.
+
+Már nem várok a tökéletes hétvégére. Elkezdtem, gyorsan jön annyi visszajelzés, hogy fennmaradjon az érdeklődés, és közben alakítom.
+
+Nem az a része érdekel, hogy „az AI kódol helyettem”. Hanem az, hogy újra könnyűnek érződik építeni.
+
+Nálad ez hogyan csapódik le? Változtatott az AI azon, hogyan indítasz side projecteket, vagy hogyan tanulsz új technológiákat építés közben?
