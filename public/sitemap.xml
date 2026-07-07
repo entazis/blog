@@ -6,6 +6,7 @@
   <url><loc>https://blog.entazis.dev/en/reviews</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags</loc></url>
   <url><loc>https://blog.entazis.dev/en/rss.xml</loc></url>
+  <url><loc>https://blog.entazis.dev/en/notes/flowmodoro-chrome-extension</loc><lastmod>2026-07-07T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/en/posts/when-building-started-feeling-light-again</loc><lastmod>2026-05-14T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/en/posts/learning-at-ai-speed</loc><lastmod>2026-05-05T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/en/posts/ai-ships-new-app-every-morning</loc><lastmod>2026-03-16T10:00:00.000Z</lastmod></url>
@@ -17,12 +18,15 @@
   <url><loc>https://blog.entazis.dev/en/tags/agents</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/ai</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/automation</loc></url>
+  <url><loc>https://blog.entazis.dev/en/tags/chrome-extension</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/coding</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/flow</loc></url>
+  <url><loc>https://blog.entazis.dev/en/tags/flowmodoro</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/focus</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/learning</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/pomodoro</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/productivity</loc></url>
+  <url><loc>https://blog.entazis.dev/en/tags/side-project</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/side-projects</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/software-development</loc></url>
   <url><loc>https://blog.entazis.dev/en/tags/time-management</loc></url>
@@ -34,6 +38,7 @@
   <url><loc>https://blog.entazis.dev/hu/reviews</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags</loc></url>
   <url><loc>https://blog.entazis.dev/hu/rss.xml</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/notes/flowmodoro-chrome-extension</loc><lastmod>2026-07-07T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/hu/posts/when-building-started-feeling-light-again</loc><lastmod>2026-05-14T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/hu/posts/openclaw-telegram-to-deployment</loc><lastmod>2026-02-09T10:00:00.000Z</lastmod></url>
   <url><loc>https://blog.entazis.dev/hu/posts/flow-in-the-age-of-ai-coding</loc><lastmod>2026-02-02T10:00:00.000Z</lastmod></url>
@@ -41,13 +46,16 @@
   <url><loc>https://blog.entazis.dev/hu/tags/agentek</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/ai</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/automatizalas</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/chrome-bovitmeny</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/flow</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/flowmodoro</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/fokusz</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/hobbi-projektek</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/idomenedzsment</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/pomodoro</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/produktivitas</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/programozas</loc></url>
+  <url><loc>https://blog.entazis.dev/hu/tags/side-project</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/szoftverfejlesztes</loc></url>
   <url><loc>https://blog.entazis.dev/hu/tags/vibe-coding</loc></url>
 </urlset>

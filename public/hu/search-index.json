@@ -1,6 +1,23 @@
 {
-  "generatedAt": "2026-05-21T16:30:12.289Z",
+  "generatedAt": "2026-07-07T12:34:31.187Z",
   "items": [
+    {
+      "type": "notes",
+      "slug": "flowmodoro-chrome-extension",
+      "title": "Egy pici Flowmodoro Chrome-bővítmény",
+      "excerpt": "Készítettem és közzétettem egy pici Chrome-bővítményt a Flowmodoróhoz — ahhoz a fókuszmódszerhez, amit a Pomodoro helyett használok. Szándékosan egyszerű, egy dolgot csinál jól.",
+      "tags": [
+        "flowmodoro",
+        "fokusz",
+        "produktivitas",
+        "chrome-bovitmeny",
+        "side-project"
+      ],
+      "publishedAt": "2026-07-07T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/hu/notes/flowmodoro-chrome-extension",
+      "url": "/hu/notes/flowmodoro-chrome-extension",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "when-building-started-feeling-light-again",

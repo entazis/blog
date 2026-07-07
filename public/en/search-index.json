@@ -1,6 +1,23 @@
 {
-  "generatedAt": "2026-05-21T16:30:12.289Z",
+  "generatedAt": "2026-07-07T12:34:31.187Z",
   "items": [
+    {
+      "type": "notes",
+      "slug": "flowmodoro-chrome-extension",
+      "title": "A tiny Flowmodoro Chrome extension",
+      "excerpt": "I built and published a tiny Chrome extension for Flowmodoro—the focus method I use instead of Pomodoro. Intentionally simple, one thing done well.",
+      "tags": [
+        "flowmodoro",
+        "focus",
+        "productivity",
+        "chrome-extension",
+        "side-project"
+      ],
+      "publishedAt": "2026-07-07T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/notes/flowmodoro-chrome-extension",
+      "url": "/en/notes/flowmodoro-chrome-extension",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "when-building-started-feeling-light-again",
