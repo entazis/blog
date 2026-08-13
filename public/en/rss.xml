@@ -5,8 +5,20 @@
     <link>https://blog.entazis.dev</link>
     <description>I write about software engineering, distributed systems, and developer tools. Sharing what I learn along the way.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jul 2026 12:34:43 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 12:16:11 GMT</lastBuildDate>
     <atom:link href="https://blog.entazis.dev/en/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The PRD Became My Interface to the Codebase</title>
+      <link>https://blog.entazis.dev/en/posts/prd-as-interface-to-the-codebase</link>
+      <guid isPermaLink="true">https://blog.entazis.dev/en/posts/prd-as-interface-to-the-codebase</guid>
+      <pubDate>Thu, 13 Aug 2026 10:00:00 GMT</pubDate>
+      <category>ai</category>
+      <category>agents</category>
+      <category>prd</category>
+      <category>software-development</category>
+      <category>workflow</category>
+      <description><![CDATA[I haven't written implementation code by hand for over a year. The specification became the place where I express what the system should become, and agents sit between the document and the code, turning one into the other.]]></description>
+    </item>
     <item>
       <title>A tiny Flowmodoro Chrome extension</title>
       <link>https://blog.entazis.dev/en/notes/flowmodoro-chrome-extension</link>

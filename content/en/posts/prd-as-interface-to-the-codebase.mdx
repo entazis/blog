@@ -1,0 +1,129 @@
+---
+slug: prd-as-interface-to-the-codebase
+locale: en
+title: "The PRD Became My Interface to the Codebase"
+excerpt: "I haven't written implementation code by hand for over a year. The specification became the place where I express what the system should become, and agents sit between the document and the code, turning one into the other."
+tags: [ai, agents, prd, software-development, workflow]
+coverImage: /en/posts/prd-as-interface-to-the-codebase.webp
+publishedAt: 2026-08-13T10:00:00.000Z
+canonicalUrl: https://blog.entazis.dev/en/posts/prd-as-interface-to-the-codebase
+---
+
+I haven't touched the code by hand for more than a year.
+
+I haven't stopped building software, and I still spend a lot of time thinking about architecture, design, debugging, and technical decisions. I just interact with the implementation differently now.
+
+Most of the time, I write documents: specifications, design decisions, architecture notes, tasks, and a lot of Markdown files. Coding agents read those documents, work through the codebase, write the implementation, run the tests, and iterate on their own.
+
+Over time, I realized that the PRD (Product Requirements Document) had become more than a document describing a feature. It had become my interface to the codebase.
+
+## Everything starts with a PRD
+
+When I have an idea, I usually start by creating a PRD draft instead of opening the codebase.
+
+The draft describes the problem I'm trying to solve, design principles, open questions, possible approaches, and the tradeoffs between them. It doesn't have to be complete. The point is to have something concrete to think about.
+
+I iterate on it until I understand the problem and the important design decisions well enough to move forward. Sometimes the original idea changes substantially. Sometimes an option that initially looked attractive turns out to have an awkward tradeoff. Sometimes I realize I'm solving the wrong problem.
+
+Once the concept is ready, the PRD moves through a small lifecycle:
+
+| Status                  | What happens                                            | Exit condition               |
+| ----------------------- | ------------------------------------------------------- | ---------------------------- |
+| **Draft**               | Research, discover, propose, refine                     | Concept approved             |
+| **Planning**            | Define milestones, deliverables, parallelization        | Timeline approved            |
+| **Architecture Review** | Review against the existing architecture and principles | Architecture section written |
+| **Approved**            | Ready for task creation                                 | Tasks created                |
+| **Active**              | Being implemented                                       | All tasks complete           |
+| **Archived**            | Done or abandoned                                       | —                            |
+
+I created a `prd-workflow` skill to make this process repeatable.
+
+Once the concept is approved, I let an agent create the development plan. It defines milestones, deliverables, dependencies, and opportunities for parallelization. Another agent reviews the plan against the current architecture and our design principles. Only then do I let another agent turn the plan into implementation tasks.
+
+The final agent works through those tasks using TDD (Test Driven Development). Writing the tests first gives the agent a concrete definition of how the code should behave. Those tests then remain in the codebase as executable documentation and help catch regressions as the system evolves.
+
+The important part is the sequence. I'm not asking an agent to take a vague idea and somehow turn it into a finished feature. Each step reduces ambiguity before the next one begins.
+
+## The documents became the durable context
+
+This workflow changed how I think about context, too.
+
+A coding agent can accumulate a huge amount of information during a session. It reads files, investigates the codebase, tries approaches, encounters errors, fixes them, and builds up a mental model of the problem.
+
+Eventually, though, the context window gets crowded.
+
+When that happens, I often just start a new agent. I don't try to preserve the entire conversation or explain everything again. I give the new agent the durable artifacts: the PRD, the architecture, the tasks, the code, and the tests.
+
+This works because the important context isn't supposed to live in the conversation.
+
+The PRDs are version-controlled just like the code. They evolve alongside the product and preserve decisions that would otherwise be difficult to reconstruct later: why we're building something, what constraints matter, which alternatives we considered, and what tradeoffs we accepted.
+
+The code tells the next agent what the system currently does. The PRD can also tell it what the system is supposed to become and why.
+
+That distinction becomes increasingly useful as more agents work on the same codebase.
+
+I've started thinking of the agent's context window as a temporary workspace rather than something that needs to be preserved. The documents are the durable memory.
+
+## Sometimes I let the agent surprise me
+
+There is a more human side to this workflow that I'm still getting used to.
+
+Sometimes I watch an agent work and it starts going in a direction I don't like. I can see the approach developing and think that it's going to lead to a bad solution. My instinct is to step in and correct it.
+
+Sometimes that's exactly what I should do.
+
+But sometimes I wait, and the agent gets back on track. It finds something in the codebase I hadn't noticed, or takes a different route that solves the problem without the issue I was expecting.
+
+Every now and then, it comes up with a solution that I think is better than what I would have written.
+
+That forces me to distinguish between two reactions: "This is wrong" and "This isn't how I would do it."
+
+The second one isn't necessarily a reason to intervene.
+
+When I wrote all the implementation myself, I naturally had a strong sense of ownership over every decision in the code. Now I sometimes have to evaluate the result rather than my familiarity with the approach.
+
+I'm not always good at this yet, but I've found it to be an important part of working effectively with agents.
+
+## The PRD is becoming an automation layer
+
+The more interesting consequence of this workflow is what happens after the implementation is finished.
+
+Once you have version-controlled specifications describing what you want the product to do and how it should fit into the architecture, those documents can be used for much more than generating code.
+
+I've been spending a lot of time building AI routines around them and running those routines automatically.
+
+An agent can compare a PRD with the current implementation and look for inconsistencies. It can search for bugs, identify missing test cases, look for security issues, suggest code-quality improvements, or find contradictions between the intended design and what the code actually does.
+
+Some of these checks are useful even when there is no active feature being implemented.
+
+I can have agents periodically inspect the gap between what I intended and what actually exists. If the product is gradually drifting away from the vision described in the PRDs, I want the system to tell me.
+
+This has become another part of development for me: not just asking agents to implement changes, but building routines that continuously examine the product and help move it closer to the intended design.
+
+I'm spending a surprising amount of time creating and improving these routines. They run automatically every day, and I keep adding new ones as I discover things I want the system to check.
+
+The same documents that help create the software can therefore also help verify it.
+
+## What changed about my work?
+
+A lot of my thinking used to eventually become code that I wrote. Now more of it becomes a specification that describes what the code should accomplish and the constraints within which it should be built.
+
+I spend more time thinking about what problem we're actually solving, which assumptions we're making, what the tradeoffs are, how a change fits into the existing architecture, and how the work can be broken down into pieces that can be implemented and tested independently.
+
+The implementation is still important. I still read code, look at tests, investigate failures, review changes, and debug problems. But I don't need to type every line for the implementation to be part of my engineering work.
+
+If something isn't right, I might change the specification, clarify a constraint, add an architectural guideline, or change a task rather than immediately editing the code myself.
+
+The document has become the place where I express what I want the system to become.
+
+And because it is version-controlled, continuously updated, and useful to both humans and agents, it has become something more than documentation.
+
+The code tells me what the system is.
+
+The PRD tells me what we're trying to build.
+
+And increasingly, the agents sit between the two, helping turn one into the other and checking that they don't drift too far apart.
+
+That's why I think of the PRD as my interface to the codebase.
+
+Not because I don't care about the code anymore, but because I increasingly interact with it through the specification, the decisions behind it, and the routines built around them.

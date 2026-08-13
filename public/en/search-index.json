@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2026-07-07T12:34:31.187Z",
+  "generatedAt": "2026-08-13T12:15:46.035Z",
   "items": [
+    {
+      "type": "posts",
+      "slug": "prd-as-interface-to-the-codebase",
+      "title": "The PRD Became My Interface to the Codebase",
+      "excerpt": "I haven't written implementation code by hand for over a year. The specification became the place where I express what the system should become, and agents sit between the document and the code, turning one into the other.",
+      "tags": [
+        "ai",
+        "agents",
+        "prd",
+        "software-development",
+        "workflow"
+      ],
+      "publishedAt": "2026-08-13T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/prd-as-interface-to-the-codebase",
+      "coverImage": "/en/posts/prd-as-interface-to-the-codebase.webp",
+      "url": "/en/posts/prd-as-interface-to-the-codebase",
+      "draft": false
+    },
     {
       "type": "notes",
       "slug": "flowmodoro-chrome-extension",
