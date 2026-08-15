@@ -54,12 +54,19 @@ export async function HomeLanding({ locale }: { locale: Locale }) {
         {latest ? (
           <article className="post-card">
             {latest.coverImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={latest.coverImage}
-                alt={t(locale, "coverImageAlt", { title: latest.title })}
-                className="mb-6 aspect-[16/9] w-full rounded-lg object-cover"
-              />
+              <Link
+                href={latest.url}
+                tabIndex={-1}
+                aria-hidden="true"
+                className="focus-ring mb-6 block overflow-hidden rounded-lg"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={latest.coverImage}
+                  alt={t(locale, "coverImageAlt", { title: latest.title })}
+                  className="aspect-[16/9] w-full rounded-lg object-cover transition hover:scale-[1.02]"
+                />
+              </Link>
             ) : null}
             <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
               <span className="tag">{latest.type}</span>
