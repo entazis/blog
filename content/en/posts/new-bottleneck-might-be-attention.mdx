@@ -12,13 +12,13 @@ canonicalUrl: https://blog.entazis.dev/en/posts/new-bottleneck-might-be-attentio
 
 I've been thinking about what the next important skill in software engineering will be.
 
-A common prediction is that AI will write most of the code. Some people put the number at 80%, 90%, or even 100% within the next few years. Dario Amodei, CEO of Anthropic, has been particularly bullish about this. He has predicted that models could write 90% of the lines of code, and has since clarified that he sees this as part of a broader shift where AI handles not only coding, but also tasks such as setting up environments, testing features, and operating software.
+A common prediction is that AI will write most of the code. Some people put the number at 80%, 90%, or even 100% within the next few years. Dario Amodei, CEO of Anthropic, has been particularly bullish about this. [He has predicted](https://www.dwarkesh.com/p/dario-amodei) that models could write 90% of the lines of code, and has since clarified that he sees this as part of a broader shift where AI handles not only coding, but also tasks such as setting up environments, testing features, and operating software.
 
 If that happens, what will software engineers do?
 
 For a while, I thought the answer might be verification.
 
-If AI writes the implementation, someone still needs to check whether it works. Tests, code review, end-to-end testing, and other guardrails become more important. A recent paper, _Skills for the future software profession: beyond agentic AI!_, makes a similar argument: as coding agents handle more implementation, verification and validation become increasingly important. The authors also point to another important skill: evaluating whether automatically generated specifications actually capture the user's intent.
+If AI writes the implementation, someone still needs to check whether it works. Tests, code review, end-to-end testing, and other guardrails become more important. A [recent study on the future skills of software professionals](https://arxiv.org/abs/2606.21894), _Skills for the future software profession: beyond agentic AI!_, makes a similar argument: as coding agents handle more implementation, verification and validation become increasingly important. The authors also point to another important skill: evaluating whether automatically generated specifications actually capture the user's intent.
 
 That makes sense to me.
 
@@ -50,7 +50,7 @@ The second one is much harder to automate.
 
 This is one reason I still think software engineering experience matters even if implementation becomes increasingly automated. You need to be able to recognize when something is technically correct but conceptually wrong. You need to notice the missing requirement, the wrong abstraction, the unnecessary complexity, or simply the fact that the product doesn't behave the way you had in mind.
 
-The paper I mentioned earlier makes a similar distinction. It argues that as specification generation becomes automated, an important human responsibility will be evaluating whether those specifications faithfully capture user intent.
+[The paper I mentioned earlier](https://arxiv.org/abs/2606.21894) makes a similar distinction. It argues that as specification generation becomes automated, an important human responsibility will be evaluating whether those specifications faithfully capture user intent.
 
 But something else has become more noticeable in my own work.
 
@@ -104,7 +104,7 @@ My productivity is increasingly limited by how quickly I can understand what the
 
 In other words, the bottleneck may be moving from **execution to attention**.
 
-I'm not the only one noticing that AI-assisted development changes the shape of developer work. JetBrains recently published a two-year study of 800 developers based on telemetry, surveys, and interviews. They found that AI users showed more IDE activations over time, suggesting that AI does not simply eliminate context switching. Instead, it can create a different pattern of fragmented work.
+I'm not the only one noticing that AI-assisted development changes the shape of developer work. JetBrains recently published a [two-year study of 800 developers](https://blog.jetbrains.com/research/2026/04/ai-impact-developer-workflows/) based on telemetry, surveys, and interviews. They found that AI users showed more IDE activations over time, suggesting that AI does not simply eliminate context switching. Instead, it can create a different pattern of fragmented work.
 
 That resonates with what I'm experiencing.
 
@@ -120,7 +120,7 @@ This is another reason why I don't think software engineering simply becomes "te
 
 The difference is that you may do this for several independent streams of work instead of spending an hour completely immersed in one implementation.
 
-Anthropic's recent analysis of roughly 400,000 Claude Code sessions shows a similar shift in the division of work. In a typical session, people make most of the planning decisions, while Claude makes most of the execution decisions. The analysis also found that, over the seven months they studied, work shifted away from fixing broken code and toward operating software, analyzing data, and other work surrounding code.
+Anthropic's recent [analysis of roughly 400,000 Claude Code sessions](https://www.anthropic.com/research/claude-code-expertise) shows a similar shift in the division of work. In a typical session, people make most of the planning decisions, while Claude makes most of the execution decisions. The analysis also found that, over the seven months they studied, work shifted away from fixing broken code and toward operating software, analyzing data, and other work surrounding code.
 
 That looks quite similar to what I'm experiencing.
 
