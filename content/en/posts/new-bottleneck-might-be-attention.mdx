@@ -1,0 +1,184 @@
+---
+slug: new-bottleneck-might-be-attention
+locale: en
+title: "The New Bottleneck in Software Engineering Might Be Attention"
+excerpt: "If AI writes most of the implementation, what is left for the engineer? After running four agent environments in parallel, I'm starting to think the limiting factor is no longer execution, but where I can afford to point my attention."
+tags: [ai, agents, attention, software-development, productivity]
+draft: true
+publishedAt: 2026-08-18T10:00:00.000Z
+canonicalUrl: https://blog.entazis.dev/en/posts/new-bottleneck-might-be-attention
+---
+
+I've been thinking about what the next important skill in software engineering will be.
+
+A common prediction is that AI will write most of the code. Some people put the number at 80%, 90%, or even 100% within the next few years. Dario Amodei, CEO of Anthropic, has been particularly bullish about this. He has predicted that models could write 90% of the lines of code, and has since clarified that he sees this as part of a broader shift where AI handles not only coding, but also tasks such as setting up environments, testing features, and operating software.
+
+If that happens, what will software engineers do?
+
+For a while, I thought the answer might be verification.
+
+If AI writes the implementation, someone still needs to check whether it works. Tests, code review, end-to-end testing, and other guardrails become more important. A recent paper, _Skills for the future software profession: beyond agentic AI!_, makes a similar argument: as coding agents handle more implementation, verification and validation become increasingly important. The authors also point to another important skill: evaluating whether automatically generated specifications actually capture the user's intent.
+
+That makes sense to me.
+
+But the more I work this way, the more I think there is another question worth asking: **did we build what we actually wanted to build?**
+
+## When AI writes the code and the tests
+
+Imagine asking an agent to implement a feature.
+
+It writes the code. It writes the tests. It runs them. It fixes the failures. It runs the application and tests it through the browser. Eventually, everything is green.
+
+What exactly have you verified?
+
+You have verified that the implementation behaves according to the specification you gave it. But what if the specification was wrong?
+
+This is one of the things that makes me question how much TDD (Test-Driven Development) can solve on its own in an AI-driven workflow.
+
+Tests are code too. If I give an AI a specification and ask it to implement the feature and write the tests, the AI can produce a very well-tested implementation of exactly what I described. That doesn't mean it is what I actually wanted.
+
+There are really two different questions:
+
+> Does the software do what I asked?
+
+and
+
+> Did I ask for the right thing?
+
+The second one is much harder to automate.
+
+This is one reason I still think software engineering experience matters even if implementation becomes increasingly automated. You need to be able to recognize when something is technically correct but conceptually wrong. You need to notice the missing requirement, the wrong abstraction, the unnecessary complexity, or simply the fact that the product doesn't behave the way you had in mind.
+
+The paper I mentioned earlier makes a similar distinction. It argues that as specification generation becomes automated, an important human responsibility will be evaluating whether those specifications faithfully capture user intent.
+
+But something else has become more noticeable in my own work.
+
+## Four development environments
+
+I currently have four development environments running in parallel.
+
+Each has its own infrastructure and services. They are set up so that agents can work on them independently without stepping on each other.
+
+I can start an agent in one environment and give it a specification. It can write the code, build it, manage the infrastructure, restart services when necessary, run the tests, debug failures, and even perform end-user testing through Playwright.
+
+Meanwhile, another agent can be doing something completely different in another environment. Another one might have a question, while another has just finished something that needs review. The agents can also use sub-agents themselves, so there isn't necessarily just one thing happening in each environment.
+
+My job is increasingly to specify what I want, make architectural decisions, answer questions, review results, and decide what needs my attention next.
+
+I also use my microphone quite a lot for this. Instead of constantly typing instructions, I can explain what I want and let the agent turn that into implementation.
+
+The actual coding is becoming a surprisingly small part of my work.
+
+What is becoming much more noticeable is how I move my attention between all these things.
+
+## Context switching as a skill
+
+When I work this way, I can jump between completely independent contexts several times within a minute.
+
+Agent A needs an answer. I switch to Agent B and review its result. Agent C has found something unexpected while running Playwright. I switch back to Agent A. Agent D has finished and is waiting for the next task. Then I return to C.
+
+There is almost no relationship between these contexts. They are independent problems being worked on in parallel.
+
+I've started paying attention to how quickly I can switch between them, not just because it is interesting, but because I want to know what it costs me.
+
+I can certainly get a lot done this way. The agents continue working while I'm dealing with something else. Work that would previously have blocked me can now happen in parallel.
+
+But I don't yet know whether this is actually a better way of working.
+
+It sometimes feels less like programming and more like managing a small engineering team. Except the "team" doesn't need meetings, doesn't sleep, and can work on four different problems simultaneously.
+
+That sounds great until you realize that you can also become the bottleneck.
+
+## The strange part about being the bottleneck
+
+When the agents are working, there is a constant stream of things that might need my attention: a question, a failed test, a finished task, a design decision, a surprising result, a review, or a new specification.
+
+The machines can keep going. I can't.
+
+This changes the optimization problem.
+
+When I was writing the code myself, my productivity was often limited by how quickly I could understand a problem and implement it. Now the agents can implement several things at the same time.
+
+My productivity is increasingly limited by how quickly I can understand what they are doing and decide what matters.
+
+In other words, the bottleneck may be moving from **execution to attention**.
+
+I'm not the only one noticing that AI-assisted development changes the shape of developer work. JetBrains recently published a two-year study of 800 developers based on telemetry, surveys, and interviews. They found that AI users showed more IDE activations over time, suggesting that AI does not simply eliminate context switching. Instead, it can create a different pattern of fragmented work.
+
+That resonates with what I'm experiencing.
+
+## I sometimes understand the code faster than the summary
+
+One small thing I've noticed surprised me.
+
+When an agent finishes a task, it usually gives me a summary. But when I really want to understand what happened, I often find it easier to read the code than to read the summary.
+
+The summary is an abstraction of the work. The code is the work.
+
+This is another reason why I don't think software engineering simply becomes "telling AI what to do." You still need enough technical understanding to inspect the result, recognize what changed, understand the consequences, and notice when something doesn't look right.
+
+The difference is that you may do this for several independent streams of work instead of spending an hour completely immersed in one implementation.
+
+Anthropic's recent analysis of roughly 400,000 Claude Code sessions shows a similar shift in the division of work. In a typical session, people make most of the planning decisions, while Claude makes most of the execution decisions. The analysis also found that, over the seven months they studied, work shifted away from fixing broken code and toward operating software, analyzing data, and other work surrounding code.
+
+That looks quite similar to what I'm experiencing.
+
+## Maybe deep work is changing shape
+
+For years, we've been told to protect deep work. Turn off notifications. Close Slack. Block three hours in the calendar. Work on one thing at a time.
+
+That advice made a lot of sense when I was the person doing the implementation.
+
+But what happens when I have four agents implementing things for me?
+
+I can no longer spend three uninterrupted hours inside one implementation. The work itself is distributed across several independent contexts.
+
+My role becomes something closer to directing attention. Where should I look next? Which result needs verification? Which agent is blocked? Which decision actually requires me? Which thing can continue without me?
+
+This is a very different kind of focus. It isn't uninterrupted focus on one problem. It is repeated, deliberate context switching between several problems.
+
+Maybe that will become an important engineering skill in an agentic world.
+
+Or maybe I'm just creating a very efficient way to exhaust myself.
+
+I don't know yet.
+
+## The part I'm still trying to understand
+
+There is one thing that makes me particularly cautious about this direction.
+
+The agents don't stop when I stop.
+
+I've caught myself continuing to manage them from my phone during what should have been a break. A quick check while having lunch. Answering something while going to the toilet.
+
+The machines can continue working, so there is always something that could be done.
+
+That creates a new kind of temptation.
+
+When the limiting factor was my own typing speed, taking a break meant nothing was happening. Now something is always happening.
+
+I don't think that's necessarily healthy.
+
+And I don't want to replace deep work with permanently being on call for a small army of software agents.
+
+So I'm trying to observe what this workflow actually does to me, rather than assuming that more parallelism automatically means more productivity.
+
+## What will the software engineer of the future be good at?
+
+I started this thinking about what the next important software engineering skill might be.
+
+Maybe it is verification. Maybe it is specification. Maybe it is architectural judgment. Maybe it is knowing when an AI-generated solution is subtly wrong.
+
+Or maybe it is something less obvious: **being able to allocate attention across many autonomous processes without losing the bigger picture.**
+
+I think these skills aren't mutually exclusive.
+
+As implementation becomes cheaper, the value may move toward intent, judgment, verification, and attention. I'm already seeing this in my own work. I write less code, spend more time specifying what should exist, review more generated work, make fewer implementation decisions and more architectural ones, and switch between contexts much more frequently.
+
+I don't know yet whether this is what software engineering will look like for everyone.
+
+But after working this way for a while, I'm starting to think that the question isn't just **"Who will write the code?"**
+
+It might be:
+
+**"When the code can be written in parallel, what happens to the engineer's attention?"**
