@@ -64,7 +64,7 @@ I can start an agent in one environment and give it a specification. It can writ
 
 Meanwhile, another agent can be doing something completely different in another environment. Another one might have a question, while another has just finished something that needs review. The agents can also use sub-agents themselves, so there isn't necessarily just one thing happening in each environment.
 
-My job is increasingly to specify what I want, make architectural decisions, answer questions, review results, and decide what needs my attention next.
+My job is increasingly to specify what I want, make architectural decisions, answer questions, review results, and decide what needs my attention next. I've written about the specification side of this in <SiteLink href="/en/posts/prd-as-interface-to-the-codebase">The PRD Became My Interface to the Codebase</SiteLink>: the document is where I express what the system should become, and the agents turn it into implementation.
 
 I also use my microphone quite a lot for this. Instead of constantly typing instructions, I can explain what I want and let the agent turn that into implementation.
 
@@ -86,7 +86,7 @@ I can certainly get a lot done this way. The agents continue working while I'm d
 
 But I don't yet know whether this is actually a better way of working.
 
-It sometimes feels less like programming and more like managing a small engineering team. Except the "team" doesn't need meetings, doesn't sleep, and can work on four different problems simultaneously.
+It sometimes feels less like programming and more like managing a small engineering team. Except the "team" doesn't need meetings, doesn't sleep, and can work on four different problems simultaneously. I first noticed this a while ago and wrote a short note about how <SiteLink href="/en/notes/coding-feels-managerial-now">coding feels managerial now</SiteLink>, back when my maker's schedule started fragmenting into a manager's schedule. Running four environments in parallel is the same feeling, just louder.
 
 That sounds great until you realize that you can also become the bottleneck.
 
@@ -120,6 +120,8 @@ This is another reason why I don't think software engineering simply becomes "te
 
 The difference is that you may do this for several independent streams of work instead of spending an hour completely immersed in one implementation.
 
+This is close to something I called <SiteLink href="/en/posts/learning-at-ai-speed">comprehension debt</SiteLink>: the gap between what the system does and what I can confidently explain. Reading the code instead of the summary is how I pay some of it back. With four environments running, the debt accumulates in four places at once.
+
 Anthropic's recent [analysis of roughly 400,000 Claude Code sessions](https://www.anthropic.com/research/claude-code-expertise) shows a similar shift in the division of work. In a typical session, people make most of the planning decisions, while Claude makes most of the execution decisions. The analysis also found that, over the seven months they studied, work shifted away from fixing broken code and toward operating software, analyzing data, and other work surrounding code.
 
 That looks quite similar to what I'm experiencing.
@@ -128,7 +130,7 @@ That looks quite similar to what I'm experiencing.
 
 For years, we've been told to protect deep work. Turn off notifications. Close Slack. Block three hours in the calendar. Work on one thing at a time.
 
-That advice made a lot of sense when I was the person doing the implementation.
+That advice made a lot of sense when I was the person doing the implementation. It's also roughly how I've structured my days for years, using the <SiteLink href="/en/posts/from-pomodoro-to-flowmodoro">Flowmodoro</SiteLink> approach: work until momentum fades, then rest.
 
 But what happens when I have four agents implementing things for me?
 
@@ -137,6 +139,8 @@ I can no longer spend three uninterrupted hours inside one implementation. The w
 My role becomes something closer to directing attention. Where should I look next? Which result needs verification? Which agent is blocked? Which decision actually requires me? Which thing can continue without me?
 
 This is a very different kind of focus. It isn't uninterrupted focus on one problem. It is repeated, deliberate context switching between several problems.
+
+Earlier I argued in <SiteLink href="/en/posts/flow-in-the-age-of-ai-coding">Flow in the Age of AI Coding</SiteLink> that flow doesn't belong to typing code, that it comes from uninterrupted ownership of the problem, and that it simply moves upward from implementation to intent. I still think that's right. What I'm less sure about is whether ownership stays uninterrupted when it is spread across four parallel streams instead of one.
 
 Maybe that will become an important engineering skill in an agentic world.
 
@@ -157,6 +161,8 @@ The machines can continue working, so there is always something that could be do
 That creates a new kind of temptation.
 
 When the limiting factor was my own typing speed, taking a break meant nothing was happening. Now something is always happening.
+
+I noticed an early version of this pattern when I wrote that I was <SiteLink href="/en/notes/coding-more-not-less">coding more, not less</SiteLink>. Agents didn't shorten my working sessions; they made the work possible in every small pocket of time, so the sessions got longer. Four parallel environments push that further.
 
 I don't think that's necessarily healthy.
 
