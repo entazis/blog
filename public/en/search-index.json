@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2026-08-15T10:18:10.667Z",
+  "generatedAt": "2026-08-18T13:10:34.415Z",
   "items": [
+    {
+      "type": "posts",
+      "slug": "new-bottleneck-might-be-attention",
+      "title": "The New Bottleneck in Software Engineering Might Be Attention",
+      "excerpt": "If AI writes most of the implementation, what is left for the engineer? After running four agent environments in parallel, I'm starting to think the limiting factor is no longer execution, but where I can afford to point my attention.",
+      "tags": [
+        "ai",
+        "agents",
+        "attention",
+        "software-development",
+        "productivity"
+      ],
+      "publishedAt": "2026-08-18T10:00:00.000Z",
+      "canonicalUrl": "https://blog.entazis.dev/en/posts/new-bottleneck-might-be-attention",
+      "coverImage": "/en/posts/new-bottleneck-might-be-attention.webp",
+      "url": "/en/posts/new-bottleneck-might-be-attention",
+      "draft": false
+    },
     {
       "type": "posts",
       "slug": "prd-as-interface-to-the-codebase",
